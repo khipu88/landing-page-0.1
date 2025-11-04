@@ -11,6 +11,8 @@
     <meta property="og:description" content="Extiende la vida útil de tu PC antigua y ahorra dinero. Optimización a domicilio en Trujillo y cursos de Linux/Ofimática." />
     <meta property="og:image" content="https://dreamina.capcut.com/es-es/resource/add-logo-to-picture" />
     
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
         /* Paleta de Colores KHIPU 88:
            Fondo Base: #000B36 (Azul Oscuro)
@@ -40,16 +42,15 @@
             background: var(--color-base); 
             color: white; 
             text-align: center; 
-            padding: 60px 20px 80px; /* Más espacio abajo para los CTA */
+            padding: 60px 20px 80px;
         }
         header img {
             width: 120px;
             margin-bottom: 25px;
-            /* Si quieres usar la tipografía del logo en el h1, ajusta aquí */
             font-family: 'Mouse Memoirs', sans-serif; 
         }
         header h1 { 
-            font-size: clamp(2rem, 5vw, 3rem); /* Responsivo */
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 15px; 
             font-family: var(--font-serif);
         }
@@ -62,6 +63,12 @@
 
         /* SECCIONES Y CONTENEDOR */
         section { padding: 60px 20px; max-width: 900px; margin: auto; }
+        .section-optimizado { background: #f9fafb; } /* Fondo para Optimización */
+        .section-cursos { background: #f0f4f8; } /* Fondo para Cursos */
+        .section-beneficios { background: #f9fafb; } /* Fondo para Beneficios */
+        .section-final-cta { background: var(--color-acento-primary); color: var(--color-base); text-align: center; padding: 40px 20px; }
+
+
         h2 { 
             color: var(--color-base); 
             margin-bottom: 35px; 
@@ -187,81 +194,80 @@
         </div>
     </header>
 
-    <section>
+    <section class="section-optimizado">
         
-        <h2>🔧 Servicio A DOMICILIO en Trujillo: ¡Optimiza tu Equipo!</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">**¿Cansado del logo de carga eterno?** La lentitud no es vejez, es el software equivocado. Tu equipo aún tiene potencial y nosotros sabemos cómo desbloquearlo.</p>
+        <h2 class="reveal">🔧 Servicio A DOMICILIO en Trujillo: ¡Optimiza tu Equipo!</h2>
+        <p class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto 40px;">**¿Cansado del logo de carga eterno?** La lentitud no es vejez, es el software equivocado. Tu equipo aún tiene potencial y nosotros sabemos cómo desbloquearlo.</p>
         
         <div class="grid-3">
-            <div class="card">
+            <div class="card reveal">
                 <h3>✅ Servicio A DOMICILIO en Trujillo</h3>
                 <p>Comodidad total. Instalamos y configuramos todo sin que te muevas de casa. El técnico va a ti para revivir tu equipo.</p>
             </div>
-            <div class="card">
-                <h3>✅ El Combo Infalible (Linux + SSD/RAM)</h3>
+            <div class="card reveal" data-sr-id="2"> <h3>✅ El Combo Infalible (Linux + SSD/RAM)</h3>
                 <p>Instalamos Linux y te asesoramos sobre el *upgrade* de hardware ideal (SSD y RAM) para maximizar el rendimiento de tu PC.</p>
             </div>
-            <div class="card">
+            <div class="card reveal" data-sr-id="3">
                 <h3>✅ Velocidad y Estabilidad Garantizada</h3>
                 <p>Equipos hasta **4 veces más rápidos** en tareas básicas, 100% seguros y libres de virus molestos. ¡Extiende la vida útil!</p>
             </div>
         </div>
 
-        <div class="cta-container">
+        <div class="cta-container reveal">
             <p style="margin-bottom: 15px; font-size: 1.1rem; font-weight: bold;">¿Listo para darle una nueva vida a tu PC antigua?</p>
             <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn">🚨 ¡COTIZA MI EQUIPO Y AGENDA UNA VISITA A DOMICILIO!</a>
         </div>
 
     </section>
 
-    <section style="background: #f0f4f8;">
+    <section class="section-cursos">
         
-        <h2>🧠 Cursos Virtuales y Prácticos: Tu Empoderamiento Digital</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">¿Sientes que la tecnología te supera? Nuestros cursos están diseñados para ti: sencillos, prácticos y enfocados solo en lo que necesitas (Linux, ofimática e internet).</p>
+        <h2 class="reveal">🧠 Cursos Virtuales y Prácticos: Tu Empoderamiento Digital</h2>
+        <p class="reveal" style="text-align: center; max-width: 700px; margin: 0 auto 40px;">¿Sientes que la tecnología te supera? Nuestros cursos están diseñados para ti: sencillos, prácticos y enfocados solo en lo que necesitas (Linux, ofimática e internet).</p>
         
         <div class="grid-3">
-            <div class="card" style="border-top-color: var(--color-acento-secondary);">
+            <div class="card reveal" style="border-top-color: var(--color-acento-secondary);">
                 <h3>✅ Modalidad VIRTUAL y Flexible</h3>
                 <p>Aprende a tu ritmo desde cualquier lugar. También ofrecemos clases **A DOMICILIO** si estás en Trujillo y prefieres la atención personalizada.</p>
             </div>
-            <div class="card" style="border-top-color: var(--color-acento-secondary);">
+            <div class="card reveal" style="border-top-color: var(--color-acento-secondary);">
                 <h3>✅ Contenido 100% Práctico</h3>
                 <p>Olvídate de la teoría aburrida. Configura Linux y domina herramientas de trabajo real (documentos, hojas de cálculo, correo) desde el primer día.</p>
             </div>
-            <div class="card" style="border-top-color: var(--color-acento-secondary);">
+            <div class="card reveal" style="border-top-color: var(--color-acento-secondary);">
                 <h3>✅ Libertad y Ahorro</h3>
                 <p>Te enseñamos a usar software libre, lo que significa **cero costos** en licencias. Empoderamiento digital sostenible para tu bolsillo.</p>
             </div>
         </div>
 
-        <div class="cta-container">
+        <div class="cta-container reveal">
             <p style="margin-bottom: 15px; font-size: 1.1rem; font-weight: bold;">¿Listo para dominar tu computadora y el software libre?</p>
             <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20más%2E" class="cta-btn">📚 ¡QUIERO MI CURSO! Recibe el temario y las fechas.</a>
         </div>
 
     </section>
 
-    <section>
+    <section class="section-beneficios">
 
-        <h2>🤔 ¿Por qué elegir Linux y KHIPU 88?</h2>
+        <h2 class="reveal">🤔 ¿Por qué elegir Linux y KHIPU 88?</h2>
         <div class="benefits-qna">
             
-            <h3>1. ¿Es verdad que Linux es más rápido en equipos viejos?</h3>
-            <p><strong>¡Totalmente!</strong> A diferencia de otros sistemas que piden muchos recursos, Linux está diseñado para ser ligero y eficiente. Esto significa que tu PC o laptop antigua puede encender y ejecutar programas básicos **hasta 4 veces más rápido** de lo que lo hace ahora. **Adiós a la lentitud desesperante.**</p>
+            <h3 class="reveal">1. ¿Es verdad que Linux es más rápido en equipos viejos?</h3>
+            <p class="reveal"><strong>¡Totalmente!</strong> A diferencia de otros sistemas que piden muchos recursos, Linux está diseñado para ser ligero y eficiente. Esto significa que tu PC o laptop antigua puede encender y ejecutar programas básicos **hasta 4 veces más rápido** de lo que lo hace ahora. **Adiós a la lentitud desesperante.**</p>
             
-            <h3>2. ¿Es Linux más seguro contra virus y ataques?</h3>
-            <p><strong>Sí, y mucho.</strong> La arquitectura de Linux es inherentemente más segura y no es un objetivo común para los virus tradicionales. Además, con Linux, tu privacidad es respetada. **Navega, trabaja y estudia con la tranquilidad de estar protegido.**</p>
+            <h3 class="reveal">2. ¿Es Linux más seguro contra virus y ataques?</h3>
+            <p class="reveal"><strong>Sí, y mucho.</strong> La arquitectura de Linux es inherentemente más segura y no es un objetivo común para los virus tradicionales. Además, con Linux, tu privacidad es respetada. **Navega, trabaja y estudia con la tranquilidad de estar protegido.**</p>
             
-            <h3>3. ¿Cuánto cuesta el software en Linux?</h3>
-            <p><strong>Cero Soles.</strong> Linux y miles de sus aplicaciones (incluyendo la suite de ofimática) son **Software Libre y Gratuito**. Esto elimina el costo de licencias anuales. Es una inversión inteligente a largo plazo que beneficia a tu bolsillo y a tu educación.</p>
+            <h3 class="reveal">3. ¿Cuánto cuesta el software en Linux?</h3>
+            <p class="reveal"><strong>Cero Soles.</strong> Linux y miles de sus aplicaciones (incluyendo la suite de ofimática) son **Software Libre y Gratuito**. Esto elimina el costo de licencias anuales. Es una inversión inteligente a largo plazo que beneficia a tu bolsillo y a tu educación.</p>
             
         </div>
 
     </section>
 
-    <section style="padding: 40px 20px; background: var(--color-acento-primary); color: var(--color-base); text-align: center;">
-        <h2 style="color: var(--color-base); margin-bottom: 25px;">¿Listo para el cambio? Te esperamos en WhatsApp.</h2>
-        <div class="cta-header">
+    <section class="section-final-cta">
+        <h2 style="color: var(--color-base); margin-bottom: 25px;" class="reveal">¿Listo para el cambio? Te esperamos en WhatsApp.</h2>
+        <div class="cta-header reveal">
             <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary" style="background: var(--color-base); color: var(--color-acento-primary);">🔧 Servicio a Domicilio</a>
             <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20más%2E" class="cta-btn secondary" style="background: var(--color-base); color: var(--color-acento-primary); border: none;">📚 Quiero el Curso Virtual</a>
         </div>
@@ -271,6 +277,21 @@
     <footer>
         © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
     </footer>
+
+    <script>
+        // Configuración básica de ScrollReveal
+        ScrollReveal().reveal('.reveal', { 
+            delay: 200,     // Retraso antes de que aparezca
+            distance: '50px', // Distancia que se desplaza
+            origin: 'bottom', // Desde dónde aparece (bottom, top, left, right)
+            interval: 100, // Retraso entre elementos secuenciales
+            easing: 'ease-in-out', // Tipo de animación
+            reset: false // Para que la animación solo ocurra una vez
+        });
+        // Si quieres animaciones diferentes para tipos de elementos, puedes crear más reglas:
+        // ScrollReveal().reveal('.card', { origin: 'left', distance: '30px', duration: 800 });
+        // ScrollReveal().reveal('.cta-btn', { origin: 'bottom', distance: '20px', duration: 600 });
+    </script>
+
 </body>
 </html>
-
