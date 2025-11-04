@@ -31,7 +31,6 @@
             line-height: 1.6; 
             font-family: var(--font-sans);
             background-color: #f9fafb;
-            /* 🚨 DESACTIVAMOS EL SCROLL DEL BODY para que solo funcione el contenedor */
             overflow: hidden; 
         }
 
@@ -39,14 +38,13 @@
         /* 2. CONFIGURACIÓN DE SCROLL-SNAP (TODO EL CONTENIDO) */
         /* ========================================================== */
         .scroll-container {
-            /* Ahora el contenedor principal es el único que maneja el scroll */
             height: 100vh; 
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth; 
         }
         
-        /* La clase 'snap-section' ahora aplica a todas las secciones */
+        /* La clase 'snap-section' ahora aplica a todas las secciones DE CONTENIDO */
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
@@ -57,6 +55,8 @@
             align-items: center;
             margin: 0 auto;
             text-align: center;
+            /* 💥 IMPORTANTE: Referencia para el footer absoluto */
+            position: relative; 
         }
 
         /* Contenedor interno para limitar el ancho del contenido */
@@ -112,13 +112,13 @@
         /* ========================================================== */
         .section-optimizado { background: #f9fafb; } 
         .section-cursos { background: #f0f4f8; }      
-        /* Las últimas secciones son ahora snap-section también */
         .section-beneficios { background: #f9fafb; }  
         .section-final-cta { 
             background: var(--color-acento-primary); 
             color: var(--color-base); 
             text-align: center; 
-            padding: 40px 20px;
+            /* 💥 Ajustamos el padding-bottom para que el contenido no tape el footer */
+            padding: 40px 20px 80px;
         }
 
         /* ========================================================== */
@@ -182,12 +182,19 @@
              background: #111827; 
              color: var(--color-acento-secondary);
         }
+        
+        /* 💥 FOOTER FIJO/ABSOLUTO DENTRO DE LA ÚLTIMA SECCIÓN */
         footer { 
             background: var(--color-base); 
             color: #9ca3af; 
             text-align: center; 
-            padding: 30px 20px; 
+            padding: 15px 20px; 
             font-size: 0.9rem; 
+            /* 💥 POSICIONAMIENTO ABSOLUTO EN LA ÚLTIMA DIAPOSITIVA */
+            position: absolute; 
+            bottom: 0;
+            left: 0;
+            width: 100%;
         }
         @media (min-width: 600px) {
             .cta-header {
@@ -282,14 +289,13 @@
                 <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
                 <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 CONSULTAR POR CURSOS VIRTUALES</a>
             </div>
+
+            <footer>
+                © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
+            </footer>
         </section>
 
-        <footer>
-            © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
-        </footer>
-        
     </div> <script>
-        // La animación ScrollReveal se mantiene solo para el Header.
         ScrollReveal().reveal('.reveal', { 
             delay: 200,
             distance: '50px',
