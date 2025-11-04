@@ -4,12 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KHIPU 88 | Revive tu PC con Linux, Ahorra y Aprende Fácil</title>
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta property="og:title" content="KHIPU 88: Optimización Linux a Domicilio en Trujillo y Cursos Virtuales" />
+    <meta property="og:description" content="Extiende la vida útil de tu PC antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
+    <meta property="og:image" content="logocuadrado.webp" /> 
+    
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
-        /* ... [Paleta, Reset, Navegación: SIN CAMBIOS] ... */
+        /* ========================================================== */
+        /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
+        /* ========================================================== */
         :root {
             --color-base: #000B36;             
             --color-acento-primary: #00E1D5;   
@@ -18,6 +27,7 @@
             --font-sans: 'Quicksand', sans-serif;  
         }
 
+        /* RESET Y ESTILOS BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             line-height: 1.6; 
@@ -25,12 +35,22 @@
             background-color: #f9fafb;
             overflow: hidden; 
         }
-        /* ... [Estilos de Sección y Fondos: SIN CAMBIOS] ... */
-        .scroll-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+        /* ========================================================== */
+        /* 2. CONFIGURACIÓN DE SCROLL-SNAP Y SECCIONES */
+        /* ========================================================== */
+        .scroll-container {
+            height: 100vh; 
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory; 
+            scroll-behavior: smooth; 
+        }
+        
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            padding: 40px 20px 80px; 
+            /* AJUSTE CLAVE: 80px de padding-top para compensar la onda de 80px */
+            padding: 80px 20px 80px; 
             display: flex; 
             flex-direction: column;
             justify-content: center;
@@ -40,14 +60,59 @@
             position: relative; 
             overflow: hidden; 
         }
+
+        /* AJUSTE PARA EL HEADER (NO TIENE ONDA EN LA PARTE SUPERIOR) */
+        header { 
+            background: var(--color-base); 
+            color: white; 
+            padding-top: 40px; /* Vuelve a su padding original, ya que no tiene onda encima */
+            padding-bottom: 80px;
+        }
+
+        /* Contenedor interno para limitar el ancho del contenido */
+        .content-wrapper {
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+        }
+
+        /* ... [Estilos de Header, H2, H3: SIN CAMBIOS] ... */
+        header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
+        header h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 15px; font-family: var(--font-serif); }
+        header p { font-size: clamp(1rem, 2vw, 1.2rem); color: #d1d5db; max-width: 600px; margin: 0 auto 30px; }
+        h2 { color: var(--color-base); margin-bottom: 35px; font-size: clamp(1.8rem, 4vw, 2.4rem); font-family: var(--font-serif); }
+        h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
+
+        /* ========================================================== */
+        /* 3. FONDOS DE SECCIÓN ALTERNADOS */
+        /* ========================================================== */
         .section-header-bg { background: var(--color-base); } 
         .section-optimizado { background: #f9fafb; } 
         .section-cursos { background: #f0f4f8; }      
         .section-beneficios { background: #f9fafb; }  
-        .section-final-cta { background: var(--color-acento-primary); color: var(--color-base); text-align: center; justify-content: flex-start; padding-top: 20vh; }
+        .section-final-cta { 
+            background: var(--color-acento-primary); 
+            color: var(--color-base); 
+            text-align: center; 
+            justify-content: flex-start; 
+            padding-top: 20vh; 
+        }
+
+        /* ... [Navegación y Responsividad: SIN CAMBIOS] ... */
+        .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
+        .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
+        .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid var(--color-base); transform: scale(1.2); }
+        header + .dot-navigation a { background: rgba(255, 255, 255, 0.7); border: 2px solid var(--color-acento-primary); }
+        header + .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid white; }
         
+        @media (max-width: 600px) {
+            .scroll-container { scroll-snap-type: none; height: auto; overflow-y: auto; }
+            .snap-section { height: auto; min-height: 80vh; scroll-snap-align: none; padding-top: 10vh; padding-bottom: 10vh; }
+            .dot-navigation { display: none !important; }
+        }
+
         /* ========================================================== */
-        /* 5. ONDAS SVG INVERTIDAS Y POSICIONADAS EN TOP DE LA SECCIÓN SIGUIENTE (ÚLTIMO INTENTO) */
+        /* 5. ONDAS SVG INVERTIDAS Y POSICIONADAS EN TOP DE LA SECCIÓN SIGUIENTE */
         /* ========================================================== */
         .wave-separator {
             position: absolute;
@@ -57,7 +122,7 @@
             height: 80px; 
             overflow: hidden; 
             line-height: 0; 
-            z-index: 10; /* Es CRÍTICO para que el SVG esté sobre el fondo de la sección actual */
+            z-index: 10; 
             /* Esto invierte la onda para que la curva mire hacia ARRIBA (forma de término) */
             transform: rotate(180deg); 
         }
