@@ -14,7 +14,9 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
-        /* [El CSS es el mismo de la versión anterior que arregló el scroll] */
+        /* ========================================================== */
+        /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
+        /* ========================================================== */
         :root {
             --color-base: #000B36;             
             --color-acento-primary: #00E1D5;   
@@ -22,18 +24,29 @@
             --font-serif: 'DM Serif Text', serif; 
             --font-sans: 'Quicksand', sans-serif;  
         }
+
+        /* RESET Y ESTILOS BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             line-height: 1.6; 
             font-family: var(--font-sans);
             background-color: #f9fafb;
+            /* 🚨 DESACTIVAMOS EL SCROLL DEL BODY para que solo funcione el contenedor */
+            overflow: hidden; 
         }
+
+        /* ========================================================== */
+        /* 2. CONFIGURACIÓN DE SCROLL-SNAP (TODO EL CONTENIDO) */
+        /* ========================================================== */
         .scroll-container {
+            /* Ahora el contenedor principal es el único que maneja el scroll */
             height: 100vh; 
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth; 
         }
+        
+        /* La clase 'snap-section' ahora aplica a todas las secciones */
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
@@ -45,20 +58,18 @@
             margin: 0 auto;
             text-align: center;
         }
+
+        /* Contenedor interno para limitar el ancho del contenido */
         .content-wrapper {
             max-width: 800px;
             width: 100%;
             margin: auto;
         }
-        .normal-section {
-            padding: 60px 20px;
-            display: flex; 
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            text-align: center;
-        }
+
+
+        /* ========================================================== */
+        /* 3. HEADER Y LOGO */
+        /* ========================================================== */
         header { 
             background: var(--color-base); 
             color: white; 
@@ -81,6 +92,8 @@
             max-width: 600px;
             margin: 0 auto 30px;
         }
+        
+        /* Estilos de Tipografía General */
         h2 { 
             color: var(--color-base); 
             margin-bottom: 35px; 
@@ -93,8 +106,13 @@
             font-size: 1.4rem; 
             font-family: var(--font-serif);
         }
+
+        /* ========================================================== */
+        /* 4. FONDOS DE SECCIÓN ALTERNADOS */
+        /* ========================================================== */
         .section-optimizado { background: #f9fafb; } 
         .section-cursos { background: #f0f4f8; }      
+        /* Las últimas secciones son ahora snap-section también */
         .section-beneficios { background: #f9fafb; }  
         .section-final-cta { 
             background: var(--color-acento-primary); 
@@ -102,6 +120,10 @@
             text-align: center; 
             padding: 40px 20px;
         }
+
+        /* ========================================================== */
+        /* 5. TARJETAS Y GRID (Ajustado a 2 elementos) */
+        /* ========================================================== */
         .grid-2 { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
@@ -115,6 +137,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
             border-top: 4px solid var(--color-acento-primary);
         }
+
+        /* [Resto del CSS (CTA y Footer)] */
         .cta-header {
             margin-top: 40px;
             display: flex;
@@ -236,37 +260,36 @@
             </div>
         </section>
         
-    </div> <section class="section-beneficios normal-section">
-        <div class="content-wrapper">
-            <h2>🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
-            <div class="benefits-qna">
-                <h3>1. ¿La PC antigua no está "demasiado vieja"?</h3>
-                <p><strong>No.</strong> La obsolescencia es a menudo un problema de software pesado. Linux consume menos recursos que otros sistemas, dándole un segundo aire de velocidad y eficiencia.</p>
-                
-                <h3>2. ¿Qué pasa con los virus y el riesgo de seguridad?</h3>
-                <p><strong>Duermes tranquilo.</strong> Linux es inherentemente más seguro y mucho menos susceptible a la mayoría de los virus que circulan. **Tu información y tu privacidad están protegidas.**</p>
-                
-                <h3>3. ¿Es difícil el cambio si siempre he usado otro sistema?</h3>
-                <p>**No, si tienes a KHIPU 88.** La interfaz moderna es muy intuitiva. Además, con nuestros cursos, te acompañamos paso a paso hasta que domines las herramientas que necesitas.</p>
+        <section class="section-beneficios snap-section">
+            <div class="content-wrapper">
+                <h2>🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
+                <div class="benefits-qna">
+                    <h3>1. ¿La PC antigua no está "demasiado vieja"?</h3>
+                    <p><strong>No.</strong> La obsolescencia es a menudo un problema de software pesado. Linux consume menos recursos que otros sistemas, dándole un segundo aire de velocidad y eficiencia.</p>
+                    
+                    <h3>2. ¿Qué pasa con los virus y el riesgo de seguridad?</h3>
+                    <p><strong>Duermes tranquilo.</strong> Linux es inherentemente más seguro y mucho menos susceptible a la mayoría de los virus que circulan. **Tu información y tu privacidad están protegidas.**</p>
+                    
+                    <h3>3. ¿Es difícil el cambio si siempre he usado otro sistema?</h3>
+                    <p>**No, si tienes a KHIPU 88.** La interfaz moderna es muy intuitiva. Además, con nuestros cursos, te acompañamos paso a paso hasta que domines las herramientas que necesitas.</p>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="section-final-cta">
-        <h2 style="color: var(--color-base); margin-bottom: 25px;">¡Listo para el salto a la tecnología libre y rápida!</h2>
-        <div class="cta-header">
-            <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
-            <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 CONSULTAR POR CURSOS VIRTUALES</a>
-        </div>
-    </section>
+        </section>
+        
+        <section class="section-final-cta snap-section">
+            <h2 style="color: var(--color-base); margin-bottom: 25px;">¡Listo para el salto a la tecnología libre y rápida!</h2>
+            <div class="cta-header">
+                <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
+                <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 CONSULTAR POR CURSOS VIRTUALES</a>
+            </div>
+        </section>
 
-    <footer>
-        © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
-    </footer>
-
-    
-<script>
-        // Mantenemos la inicialización de ScrollReveal, pero ya no afecta a casi nada.
+        <footer>
+            © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
+        </footer>
+        
+    </div> <script>
+        // La animación ScrollReveal se mantiene solo para el Header.
         ScrollReveal().reveal('.reveal', { 
             delay: 200,
             distance: '50px',
@@ -279,3 +302,4 @@
 
 </body>
 </html>
+
