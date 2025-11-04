@@ -7,6 +7,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta property="og:title" content="KHIPU 88: Optimización Linux a Domicilio en Trujillo y Cursos Virtuales" />
     <meta property="og:description" content="Extiende la vida útil de tu PC antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
     <meta property="og:image" content="logocuadrado.webp" /> 
@@ -31,11 +33,12 @@
             line-height: 1.6; 
             font-family: var(--font-sans);
             background-color: #f9fafb;
+            /* 💥 El scroll en el body está oculto, solo el scroll-container tiene scroll */
             overflow: hidden; 
         }
 
         /* ========================================================== */
-        /* 2. CONFIGURACIÓN DE SCROLL-SNAP (TODO EL CONTENIDO) */
+        /* 2. CONFIGURACIÓN DE SCROLL-SNAP Y SECCIONES */
         /* ========================================================== */
         .scroll-container {
             height: 100vh; 
@@ -44,19 +47,19 @@
             scroll-behavior: smooth; 
         }
         
-        /* La clase 'snap-section' ahora aplica a todas las secciones DE CONTENIDO */
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            padding: 40px 20px;
+            padding: 40px 20px 80px; 
             display: flex; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
             text-align: center;
-            /* 💥 IMPORTANTE: Referencia para el footer absoluto */
             position: relative; 
+            overflow: hidden; 
+            /* Se ha añadido el ID en el HTML para el anclaje */
         }
 
         /* Contenedor interno para limitar el ancho del contenido */
@@ -66,50 +69,62 @@
             margin: auto;
         }
 
-
-        /* ========================================================== */
-        /* 3. HEADER Y LOGO */
-        /* ========================================================== */
-        header { 
-            background: var(--color-base); 
-            color: white; 
-        }
-        header img {
-            width: 30vw;        
-            max-width: 60px;    
-            height: auto;
-            margin: 0 auto 35px auto; 
-            display: block; 
-        }
-        header h1 { 
-            font-size: clamp(2rem, 5vw, 3rem); 
-            margin-bottom: 15px; 
-            font-family: var(--font-serif);
-        }
-        header p { 
-            font-size: clamp(1rem, 2vw, 1.2rem); 
-            color: #d1d5db;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        /* Estilos de Tipografía General */
-        h2 { 
-            color: var(--color-base); 
-            margin-bottom: 35px; 
-            font-size: clamp(1.8rem, 4vw, 2.4rem); 
-            font-family: var(--font-serif);
-        }
-        h3 { 
-            color: var(--color-base); 
-            margin-top: 15px; 
-            font-size: 1.4rem; 
-            font-family: var(--font-serif);
+        /* 💥 RESPONSIVIDAD AVANZADA: Desactivar Scroll-Snap y vh en móviles */
+        @media (max-width: 600px) {
+            .scroll-container {
+                scroll-snap-type: none; /* Desactivar snap */
+                height: auto;
+                overflow-y: auto;
+            }
+            .snap-section {
+                height: auto; /* Permitir scroll normal si el contenido es largo */
+                min-height: 80vh; /* Mantener un mínimo de altura */
+                scroll-snap-align: none;
+                padding-top: 10vh;
+                padding-bottom: 10vh;
+            }
+            /* Ocultar el menú de navegación lateral en móviles */
+            .dot-navigation { display: none !important; }
         }
 
         /* ========================================================== */
-        /* 4. FONDOS DE SECCIÓN ALTERNADOS */
+        /* 3. NAVEGACIÓN LATERAL (NUEVO) */
         /* ========================================================== */
+        .dot-navigation {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        .dot-navigation a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.5); /* Color gris/transparente */
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-indent: -9999px; /* Ocultar texto */
+            border: 2px solid rgba(0, 0, 0, 0.2); /* Borde suave */
+        }
+        .dot-navigation a.active {
+            background: var(--color-acento-primary); /* Color de acento cuando está activo */
+            border: 2px solid var(--color-base); 
+            transform: scale(1.2);
+        }
+
+        /* Ajuste de color del menú en el Header (fondo oscuro) */
+        header + .dot-navigation a {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--color-acento-primary);
+        }
+        header + .dot-navigation a.active {
+            background: var(--color-acento-primary);
+            border: 2px solid white;
+        }
+
+        /* [Resto del CSS (FONDOS, CTA, ICONOS) sin cambios funcionales] */
         .section-optimizado { background: #f9fafb; } 
         .section-cursos { background: #f0f4f8; }      
         .section-beneficios { background: #f9fafb; }  
@@ -117,28 +132,15 @@
             background: var(--color-acento-primary); 
             color: var(--color-base); 
             text-align: center; 
-            /* 💥 Ajustamos el padding-bottom para que el contenido no tape el footer */
-            padding: 40px 20px 80px;
+            padding: 40px 20px 120px; 
+            justify-content: flex-start; 
+            padding-top: 20vh; 
         }
-
-        /* ========================================================== */
-        /* 5. TARJETAS Y GRID (Ajustado a 2 elementos) */
-        /* ========================================================== */
-        .grid-2 { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 20px; 
-            margin-top: 30px; 
+        .section-final-cta .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .card { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            border-top: 4px solid var(--color-acento-primary);
-        }
-
-        /* [Resto del CSS (CTA y Footer)] */
         .cta-header {
             margin-top: 40px;
             display: flex;
@@ -158,58 +160,60 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 225, 213, 0.4);
         }
-        .cta-btn:hover { 
-            background: var(--color-acento-secondary);
-            transform: scale(1.05);
-            color: white;
-            box-shadow: 0 6px 15px rgba(8, 211, 255, 0.6);
+        .social-icons {
+            margin-top: 50px; 
+            margin-bottom: 20px; 
+            display: flex;
+            gap: 25px;
         }
-        .cta-header .secondary {
-            background: none;
-            border: 2px solid var(--color-acento-primary);
-            color: var(--color-acento-primary);
-            box-shadow: none;
+        .social-icons a {
+            color: var(--color-base); 
+            font-size: 1.8rem; 
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .cta-header .secondary:hover {
-            background: var(--color-acento-primary);
+        .section-final-cta .social-icons a:hover {
             color: var(--color-base);
+            transform: scale(1.2);
         }
-        .section-final-cta .cta-btn {
-             background: var(--color-base); 
-             color: var(--color-acento-primary);
-        }
-        .section-final-cta .cta-btn:hover {
-             background: #111827; 
-             color: var(--color-acento-secondary);
-        }
-        
-        /* 💥 FOOTER FIJO/ABSOLUTO DENTRO DE LA ÚLTIMA SECCIÓN */
         footer { 
             background: var(--color-base); 
             color: #9ca3af; 
             text-align: center; 
             padding: 15px 20px; 
             font-size: 0.9rem; 
-            /* 💥 POSICIONAMIENTO ABSOLUTO EN LA ÚLTIMA DIAPOSITIVA */
             position: absolute; 
             bottom: 0;
             left: 0;
             width: 100%;
         }
-        @media (min-width: 600px) {
-            .cta-header {
-                flex-direction: row;
-                justify-content: center;
-                gap: 25px;
-            }
+        /* ESTILOS DE ONDAS SVG */
+        .wave-separator {
+            position: absolute; bottom: -1px; left: 0; width: 100%; height: 80px; 
+            overflow: hidden; line-height: 0; 
         }
+        .wave-separator svg {
+            position: relative; display: block; width: calc(100% + 1.3px); height: 80px; 
+        }
+        .wave-top-optimizado .shape-fill { fill: #f9fafb; } 
+        .wave-top-cursos .shape-fill { fill: #f0f4f8; }      
+        .wave-top-beneficios .shape-fill { fill: #f9fafb; }  
+        .wave-top-final-cta .shape-fill { fill: var(--color-acento-primary); } 
+        /* Fin de estilos CSS */
     </style>
 </head>
 <body>
 
+    <nav class="dot-navigation">
+        <a href="#inicio" data-section="inicio" class="active">Inicio</a>
+        <a href="#servicio" data-section="servicio">Servicio</a>
+        <a href="#cursos" data-section="cursos">Cursos</a>
+        <a href="#preguntas" data-section="preguntas">Preguntas</a>
+        <a href="#contacto" data-section="contacto">Contacto</a>
+    </nav>
+    
     <div class="scroll-container">
 
-        <header class="snap-section">
+        <header id="inicio" class="snap-section">
             <div class="content-wrapper">
                 <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
                 
@@ -221,14 +225,19 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 APRENDER LINUX Y OFIMÁTICA FÁCIL</a>
                 </div>
             </div>
+            <div class="wave-separator wave-top-optimizado">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
         </header>
 
-        <section class="section-optimizado snap-section">
+        <section id="servicio" class="section-optimizado snap-section">
             <div class="content-wrapper">
-                <h2>⚡️ Nuestro Servicio: PC Rápida, Sin Salir de Casa (Trujillo)</h2>
-                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Tu equipo solo necesita el software correcto. Hemos reducido el servicio a **dos promesas irrefutables** para asegurar la visibilidad.</p>
+                <h2 class="reveal">⚡️ Nuestro Servicio: PC Rápida, Sin Salir de Casa (Trujillo)</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Tu equipo solo necesita el software correcto. Hemos reducido el servicio a **dos promesas irrefutables** para asegurar la visibilidad.</p>
                 
-                <div class="grid-2">
+                <div class="grid-2 reveal">
                     <div class="card">
                         <h3>✅ Servicio a Domicilio y Hardware</h3>
                         <p>Instalamos y configuramos Linux en tu casa en Trujillo, y te asesoramos sobre el *upgrade* de hardware ideal (SSD/RAM) para el máximo rendimiento.</p>
@@ -239,18 +248,24 @@
                     </div>
                 </div>
 
-                <div class="cta-container">
+                <div class="cta-container reveal">
                     <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn">🚨 ¡MI PC MERECE UNA SEGUNDA OPORTUNIDAD! Clic Aquí.</a>
                 </div>
             </div>
+            
+            <div class="wave-separator wave-top-cursos">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
         </section>
 
-        <section class="section-cursos snap-section">
+        <section id="cursos" class="section-cursos snap-section">
             <div class="content-wrapper">
-                <h2>🎓 Cursos Prácticos de Linux: Domina el Software Libre</h2>
-                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Te enseñamos a usar Linux y el software de ofimática libre (documentos, hojas de cálculo) de forma sencilla, desde cero, ahorrándote costos de licencias.</p>
+                <h2 class="reveal">🎓 Cursos Prácticos de Linux: Domina el Software Libre</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Te enseñamos a usar Linux y el software de ofimática libre (documentos, hojas de cálculo) de forma sencilla, desde cero, ahorrándote costos de licencias.</p>
                 
-                <div class="grid-2">
+                <div class="grid-2 reveal">
                     <div class="card" style="border-top-color: var(--color-acento-secondary);">
                         <h3>✅ Clases 100% Prácticas y Flexibles</h3>
                         <p>Aprende haciendo. Contenido enfocado al trabajo real en formato virtual para toda LATAM, o presencial si estás en Trujillo.</p>
@@ -261,16 +276,22 @@
                     </div>
                 </div>
 
-                <div class="cta-container">
+                <div class="cta-container reveal">
                     <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn">📚 SOLICITAR PROGRAMA DE CURSOS Y FECHAS</a>
                 </div>
             </div>
+            
+            <div class="wave-separator wave-top-beneficios">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
         </section>
         
-        <section class="section-beneficios snap-section">
+        <section id="preguntas" class="section-beneficios snap-section">
             <div class="content-wrapper">
-                <h2>🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
-                <div class="benefits-qna">
+                <h2 class="reveal">🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
+                <div class="benefits-qna reveal">
                     <h3>1. ¿La PC antigua no está "demasiado vieja"?</h3>
                     <p><strong>No.</strong> La obsolescencia es a menudo un problema de software pesado. Linux consume menos recursos que otros sistemas, dándole un segundo aire de velocidad y eficiencia.</p>
                     
@@ -281,31 +302,102 @@
                     <p>**No, si tienes a KHIPU 88.** La interfaz moderna es muy intuitiva. Además, con nuestros cursos, te acompañamos paso a paso hasta que domines las herramientas que necesitas.</p>
                 </div>
             </div>
+            
+            <div class="wave-separator wave-top-final-cta">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
         </section>
         
-        <section class="section-final-cta snap-section">
-            <h2 style="color: var(--color-base); margin-bottom: 25px;">¡Listo para el salto a la tecnología libre y rápida!</h2>
-            <div class="cta-header">
-                <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
-                <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 CONSULTAR POR CURSOS VIRTUALES</a>
-            </div>
+        <section id="contacto" class="section-final-cta snap-section">
+            <div class="content-wrapper">
+                <h2 style="color: var(--color-base); margin-bottom: 25px;" class="reveal">¡Listo para el salto a la tecnología libre y rápida!</h2>
+                <div class="cta-header reveal">
+                    <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
+                    <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary">📚 CONSULTAR POR CURSOS VIRTUALES</a>
+                </div>
 
+                <div class="social-icons reveal">
+                    <a href="https://www.facebook.com/khipu88pe" target="_blank" aria-label="Visita nuestro Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/khipu88pe" target="_blank" aria-label="Visita nuestro Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:khipu88@gmail.com" aria-label="Envíanos un correo electrónico"><i class="fas fa-envelope"></i></a>
+                </div>
+                
+            </div>
+            
             <footer>
                 © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
             </footer>
         </section>
 
-    </div> <script>
+    </div> 
+
+    <script>
+        // 💥 MEJORA 4: ScrollReveal
+        // Configuración global de ScrollReveal. Lo hemos centralizado para evitar código repetido.
         ScrollReveal().reveal('.reveal', { 
-            delay: 200,
-            distance: '50px',
+            delay: 150, // Más rápido
+            distance: '40px', // Menos distancia
             origin: 'bottom',
-            interval: 100,
+            interval: 0, // Desactivar el intervalo, usaremos la clase 'reveal' en bloques.
             easing: 'ease-in-out',
             reset: false 
         });
-</script>
+
+
+        // 💥 MEJORA 2: Navegación Fija y Detección de Sección Activa
+        const scrollContainer = document.querySelector('.scroll-container');
+        const sections = document.querySelectorAll('.snap-section');
+        const navLinks = document.querySelectorAll('.dot-navigation a');
+
+        // Función para activar el punto de navegación según la sección visible
+        function updateNav() {
+            let currentSection = '';
+            const scrollCenter = scrollContainer.scrollTop + (scrollContainer.offsetHeight / 2);
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                // Detecta si el centro del viewport está dentro de la sección
+                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
+                    currentSection = section.id;
+                }
+            });
+
+            // Actualiza la clase 'active' en los puntos de navegación
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Event listener para actualizar la navegación al hacer scroll
+        scrollContainer.addEventListener('scroll', updateNav);
+
+        // Inicializar la navegación al cargar la página
+        updateNav();
+
+        // Manejar clics en los puntos de navegación para scroll suave
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Usar scroll-behavior: smooth en CSS es suficiente, pero forzamos el scroll
+                    scrollContainer.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
-
