@@ -107,7 +107,7 @@
         /* ========================================================== */
         /* 3. FONDOS DE SECCIÓN ALTERNADOS */
         /* ========================================================== */
-        .section-header-bg { background: var(--color-base); } /* Fondo del header */
+        .section-header-bg { background: var(--color-base); } 
         .section-optimizado { background: #f9fafb; } 
         .section-cursos { background: #f0f4f8; }      
         .section-beneficios { background: #f9fafb; }  
@@ -173,7 +173,7 @@
         }
 
         /* ========================================================== */
-        /* 5. ONDAS SVG INVERTIDAS Y POSICIONADAS EN TOP */
+        /* 5. ONDAS SVG INVERTIDAS Y POSICIONADAS EN TOP (CORREGIDO EL FILL) */
         /* ========================================================== */
         .wave-separator {
             position: absolute;
@@ -191,11 +191,24 @@
             width: calc(100% + 1.3px); 
             height: 80px; 
         }
+        
         /* Colores de las ondas: DEBE COINCIDIR CON EL COLOR DEL FONDO DE LA SECCIÓN PREVIA */
-        .wave-from-header .shape-fill { fill: var(--color-base); } /* Onda para #servicio, color de header */
-        .wave-from-optimizado .shape-fill { fill: #f9fafb; }           /* Onda para #cursos, color de #servicio */
-        .wave-from-cursos .shape-fill { fill: #f0f4f8; }              /* Onda para #preguntas, color de #cursos */
-        .wave-from-beneficios .shape-fill { fill: #f9fafb; }           /* Onda para #contacto, color de #preguntas */
+        /* Onda que viene de #inicio (Fondo: var(--color-base) #000B36) */
+        .wave-from-header .shape-fill { 
+            fill: var(--color-base); 
+        }           
+        /* Onda que viene de #servicio (Fondo: #f9fafb) */
+        .wave-from-optimizado .shape-fill { 
+            fill: #f9fafb; 
+        }           
+        /* Onda que viene de #cursos (Fondo: #f0f4f8) */
+        .wave-from-cursos .shape-fill { 
+            fill: #f0f4f8; 
+        }              
+        /* Onda que viene de #preguntas (Fondo: #f9fafb) */
+        .wave-from-beneficios .shape-fill { 
+            fill: #f9fafb; 
+        }           
 
 
         /* [Resto del CSS (CTA, Cards, Footer) sin cambios] */
@@ -398,3 +411,4 @@
 
 </body>
 </html>
+
