@@ -25,6 +25,7 @@
             --color-acento-secondary: #08D3FF; 
             --font-serif: 'DM Serif Text', serif; 
             --font-sans: 'Quicksand', sans-serif;  
+            --wave-height: 80px; /* ALTURA DE LA ONDA DEFINIDA */
         }
 
         /* RESET Y ESTILOS BASE */
@@ -44,13 +45,15 @@
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth; 
+            /* CORRECCIÓN CLAVE 1: Deja espacio de 80px en la parte superior al hacer snap */
+            scroll-padding-top: var(--wave-height); 
         }
         
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            /* AJUSTE CLAVE: 80px de padding-top para compensar la onda de 80px */
-            padding: 80px 20px 80px; 
+            /* VUELVE AL PADDING ORIGINAL DE CENTRADO */
+            padding: 40px 20px 80px; 
             display: flex; 
             flex-direction: column;
             justify-content: center;
@@ -61,12 +64,13 @@
             overflow: hidden; 
         }
 
-        /* AJUSTE PARA EL HEADER (NO TIENE ONDA EN LA PARTE SUPERIOR) */
+        /* AJUSTE PARA EL HEADER (SOLO CENTRADO) */
         header { 
             background: var(--color-base); 
             color: white; 
-            padding-top: 40px; /* Vuelve a su padding original, ya que no tiene onda encima */
+            padding-top: 40px; 
             padding-bottom: 80px;
+            justify-content: center;
         }
 
         /* Contenedor interno para limitar el ancho del contenido */
@@ -75,6 +79,16 @@
             width: 100%;
             margin: auto;
         }
+
+        /* CORRECCIÓN CLAVE 4: Ajustamos el padding del contenido SOLO si tiene una onda en su top */
+        #servicio .content-wrapper,
+        #cursos .content-wrapper,
+        #preguntas .content-wrapper,
+        #contacto .content-wrapper {
+            /* Este padding mueve el contenido por debajo de la onda de 80px */
+            padding-top: var(--wave-height); 
+        }
+
 
         /* ... [Estilos de Header, H2, H3: SIN CAMBIOS] ... */
         header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
@@ -119,7 +133,7 @@
             top: 0; /* ANCLADO AL BORDE SUPERIOR DE LA SECCIÓN INFERIOR */
             left: 0;
             width: 100%;
-            height: 80px; 
+            height: var(--wave-height); 
             overflow: hidden; 
             line-height: 0; 
             z-index: 10; 
@@ -130,7 +144,7 @@
             position: relative;
             display: block;
             width: calc(100% + 1.3px); 
-            height: 80px; 
+            height: var(--wave-height); 
         }
         
         /* Colores de las ondas: DEBE COINCIDIR CON EL COLOR DEL FONDO DE LA SECCIÓN PREVIA */
@@ -178,7 +192,7 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary reveal">📚 APRENDER LINUX Y OFIMÁTICA FÁCIL</a>
                 </div>
             </div>
-            </header>
+        </header>
 
         <section id="servicio" class="snap-section section-optimizado">
             <div class="wave-separator wave-from-header"> 
@@ -205,7 +219,7 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn reveal">🚨 ¡MI PC MERECE UNA SEGUNDA OPORTUNIDAD! Clic Aquí.</a>
                 </div>
             </div>
-            </section>
+        </section>
 
         <section id="cursos" class="snap-section section-cursos">
             <div class="wave-separator wave-from-optimizado">
@@ -300,13 +314,14 @@
 
         function updateNav() {
             let currentSection = '';
-            const scrollCenter = scrollContainer.scrollTop + (scrollContainer.offsetHeight / 2);
+            // Ajustamos el umbral para tener en cuenta el scroll-padding-top
+            const scrollThreshold = scrollContainer.scrollTop + 100; 
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
 
-                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
+                if (scrollThreshold >= sectionTop && scrollThreshold < sectionTop + sectionHeight) {
                     currentSection = section.id;
                 }
             });
