@@ -318,10 +318,24 @@
         }
         
         /* Media Queries para responsividad */
+        /* Corrección específica para el fondo de Tux en móviles */
+        @media screen and (max-width: 768px) {
+            .section-beneficios::before {
+                /* Desactiva el parallax (fixed) para evitar el error de renderizado en móviles */
+                background-attachment: scroll !important; 
+                
+                /* Ajusta el tamaño de la imagen de Tux para móviles */
+                background-size: 500px; 
+                background-position: center bottom; /* Centra mejor el pingüino */
+            }
+        }
+        
+        /* Media Queries para responsividad existentes (600px) */
         @media (max-width: 600px) {
             .snap-section { min-height: 80vh; padding: 50px 20px; }
             .dot-navigation { display: none !important; }
         }
+        
     </style>
 </head>
 <body>
@@ -565,3 +579,4 @@
 
 </body>
 </html>
+
