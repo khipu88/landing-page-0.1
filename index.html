@@ -101,81 +101,87 @@
         h2 { color: var(--color-base); margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-family: var(--font-serif); line-height: 1.2; }
         h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
 
-        /* NUEVO ESTILO: Subtítulos de Secciones 2, 3 y 4 */
+        /* Estilo: Subtítulos de Secciones 2, 3 y 4 */
         .subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #4b5563; /* Gris oscuro para destacar del texto normal */
+            color: #4b5563; 
             max-width: 750px; 
-            margin: 0 auto 40px; /* Espacio inferior para separarlo del grid */
+            margin: 0 auto 40px; 
         }
         
         /* ========================================================== */
-        /* FONDOS DE SECCIÓN CON TRAMAS GEOMÉTRICAS Y VISIBLES */
+        /* FONDOS DE SECCIÓN CON TRAMAS GEOMÉTRICAS 3D Y VISIBLES */
         /* ========================================================== */
         
         .section-header-bg { /* Selector vacío */ } 
         
-        /* TRAMA 1: RED NEURONAL / REJILLA MESH (Sección Servicios) */
+        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) */
         .section-servicio { 
             background-color: #f9fafb; 
             background-image: 
-                /* Líneas verticales (alta opacidad) */
-                linear-gradient(to right, rgba(0, 0, 0, 0.35) 2px, transparent 2px),
-                /* Líneas horizontales (alta opacidad) */
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 2px, transparent 2px);
+                /* Línea principal (120deg) */
+                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                /* Línea secundaria (60deg) */
+                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                /* Línea horizontal (0deg) */
+                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
             
-            background-size: 40px 40px; 
+            background-size: 30px 52px; /* Proporciones isométricas */
             background-blend-mode: overlay;
         } 
         
-        /* TRAMA 2: LÍNEAS DIAGONALES (Sección Talleres) */
+        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) */
         .section-talleres { 
-            background-color: #eef2f7; 
+            background-color: #eef2ff; 
             background-image: 
                 repeating-linear-gradient(
-                    45deg, 
-                    rgba(0, 0, 0, 0.40) 0px, /* Líneas más gruesas y opacas */
-                    rgba(0, 0, 0, 0.40) 2px,
+                    -45deg, 
+                    rgba(0, 0, 0, 0.5) 0, 
+                    rgba(0, 0, 0, 0.5) 2px,
                     transparent 2px,
-                    transparent 20px 
+                    transparent 40px
+                ),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.5) 0,
+                    rgba(0, 0, 0, 0.5) 2px,
+                    transparent 2px,
+                    transparent 40px
                 );
-            background-size: 20px 20px;
+            background-size: 40px 40px; 
             background-blend-mode: overlay;
         }  
         
-        /* TRAMA 3: PATRÓN HEXAGONAL / HONEYCOMB (Sección Por Qué) */
+        /* TRAMA 3: CUBOS ENTRELAZADOS / PERSPECTIVA 3D (Sección Por Qué) */
         .section-beneficios { 
             background-color: #f9fafb; 
-            /* Esta es una trama compleja de hexágonos en CSS puro */
+            /* Se usan múltiples gradientes y posicionamiento para crear cubos */
             background-image: 
-                radial-gradient(circle at 100% 50%, rgba(0, 0, 0, 0.4) 1px, transparent 1.5px),
-                radial-gradient(circle at 0% 50%, rgba(0, 0, 0, 0.4) 1px, transparent 1.5px),
-                linear-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 1.5px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.4) 1px, transparent 1.5px),
-                linear-gradient(120deg, rgba(0, 0, 0, 0.4) 1px, transparent 1.5px);
+                linear-gradient(45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.5) 75%);
             
-            background-size: 25px 40px; 
-            background-position: 0 0, 25px 20px, 0 0, 0 0, 0 0;
+            background-size: 30px 30px; 
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px; 
             background-blend-mode: overlay;
         }  
         
-        /* TRAMA 4: REJILLA DE PUNTOS GRUESOS (Sección CTA Final) */
+        /* TRAMA 4: REJILLA DE LÍNEA DE ALTA DENSIDAD (Sección CTA Final) */
         .section-final-cta { 
             background-color: var(--color-acento-primary); 
             color: var(--color-base); 
             padding: 80px 20px; 
-            /* Puntos más grandes y oscuros */
             background-image: 
-                radial-gradient(circle at center, 
-                                rgba(0, 11, 54, 0.45) 3px, 
-                                transparent 4px); 
+                linear-gradient(to right, rgba(0, 11, 54, 0.6) 2px, transparent 2px),
+                linear-gradient(to bottom, rgba(0, 11, 54, 0.6) 2px, transparent 2px);
             
-            background-size: 30px 30px;
+            background-size: 25px 25px; /* Rejilla más fina y densa */
             background-blend-mode: overlay;
         }
 
         /* ========================================================== */
-        /* 3. BOTONES Y TARJETAS */
+        /* 3. BOTONES Y TARJETAS (Sin cambios) */
         /* ========================================================== */
         
         /* CTA BOTÓN ÚNICO */
@@ -250,9 +256,9 @@
         }
 
         /* ========================================================== */
-        /* 4. RESPONSIVIDAD Y NAVEGACIÓN */
+        /* 4. RESPONSIVIDAD Y NAVEGACIÓN (Sin cambios) */
         /* ========================================================== */
-        footer { background: var(--color-base); color: #9ca3af; text-align: center; padding: 15px 20px; font-size: 0.9rem; position: absolute; bottom: 0; left: 0; width: 100%; }
+        footer { position: relative; background: var(--color-base); color: #9ca3af; text-align: center; padding: 15px 20px; font-size: 0.9rem; position: absolute; bottom: 0; left: 0; width: 100%; }
         
         .social-icons { margin-top: 40px; margin-bottom: 20px; display: flex; gap: 30px; justify-content: center; }
         .social-icons a { 
@@ -428,10 +434,11 @@
         ScrollReveal().reveal('.reveal', defaultReveal);
 
         // 2. REVELADO ESCALONADO (Tarjetas .card)
+        // Se aplica el efecto una después de otra con 150ms de diferencia
         ScrollReveal().reveal('.reveal-stagger', {
             ...defaultReveal,
-            delay: 200, // Un poco más de delay inicial
-            interval: 150, // REVELADO UNA DESPUÉS DE OTRA con 150ms de diferencia
+            delay: 200, 
+            interval: 150, 
         });
 
 
