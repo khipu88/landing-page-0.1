@@ -45,33 +45,44 @@
             overflow-y: scroll;
             scroll-snap-type: y mandatory; 
             scroll-behavior: smooth; 
-            /* Esta es la propiedad clave: Le dice al scroll-snap que deje 80px en la parte superior */
-            scroll-padding-top: var(--wave-height); 
+            /* CORRECCIÓN CLAVE: Eliminamos scroll-padding-top */
+            scroll-padding-top: 0; 
         }
         
+        /* Estilos para las secciones de contenido (Header, Servicio, Cursos, etc.) */
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            /* Padding general para la sección, el contenido se empujará con el content-wrapper */
-            padding: 0 20px 80px; /* Quitamos el padding-top de aquí para que solo lo maneje el content-wrapper */
+            /* Padding limpio, ya no compensa la onda */
+            padding: 40px 20px 80px; 
             display: flex; 
             flex-direction: column;
-            justify-content: center; /* Centrar el contenido verticalmente */
+            justify-content: center;
             align-items: center;
             margin: 0 auto;
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
+        
+        /* NUEVA SECCIÓN: Separador exclusivo para la onda */
+        .wave-only-separator {
+            height: var(--wave-height); /* 80px de alto */
+            /* Es una sección de transición, NO queremos que el scroll se detenga aquí */
+            scroll-snap-align: none; 
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
 
-        /* AJUSTE PARA EL HEADER (LA PRIMERA SECCIÓN SIN ONDA ARRIBA) */
+        /* AJUSTE PARA EL HEADER */
         header { 
             background: var(--color-base); 
             color: white; 
-            /* El header no tiene onda encima, así que puede tener su propio padding-top */
-            padding-top: 40px; /* O el valor que prefieras para el top del header */
+            padding-top: 40px; 
             padding-bottom: 80px;
-            justify-content: center; 
         }
 
         /* Contenedor interno para limitar el ancho del contenido */
@@ -79,19 +90,7 @@
             max-width: 800px;
             width: 100%;
             margin: auto;
-            /* Por defecto, un padding top de 40px para el contenido de las secciones */
-            padding-top: 40px; 
         }
-
-        /* Aplicamos padding-top EXTRA solo a los content-wrapper de secciones con onda */
-        /* Esto empuja el contenido para que la onda de 80px en top:0 no lo tape */
-        #servicio .content-wrapper,
-        #cursos .content-wrapper,
-        #preguntas .content-wrapper,
-        #contacto .content-wrapper {
-            padding-top: calc(40px + var(--wave-height)); /* 40px base + 80px de la onda */
-        }
-
 
         /* ... [Estilos de Header, H2, H3: SIN CAMBIOS] ... */
         header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
@@ -115,6 +114,12 @@
             padding-top: 20vh; 
         }
 
+        /* FONDOS DE LOS NUEVOS SEPARADORES: DEBE SER EL COLOR DE LA SECCIÓN SIGUIENTE */
+        .sep-header-to-optimizado { background: #f9fafb; }
+        .sep-optimizado-to-cursos { background: #f0f4f8; }
+        .sep-cursos-to-beneficios { background: #f9fafb; }
+        .sep-beneficios-to-final { background: var(--color-acento-primary); }
+
         /* ... [Navegación y Responsividad: SIN CAMBIOS] ... */
         .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
         .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
@@ -125,15 +130,16 @@
         @media (max-width: 600px) {
             .scroll-container { scroll-snap-type: none; height: auto; overflow-y: auto; }
             .snap-section { height: auto; min-height: 80vh; scroll-snap-align: none; padding-top: 10vh; padding-bottom: 10vh; }
+            .wave-only-separator { height: var(--wave-height); scroll-snap-align: none; }
             .dot-navigation { display: none !important; }
         }
 
         /* ========================================================== */
-        /* 5. ONDAS SVG EN TOP DE LA SECCIÓN INFERIOR Y GIRADAS */
+        /* 5. ONDAS SVG DENTRO DEL SEPARADOR */
         /* ========================================================== */
         .wave-separator {
             position: absolute;
-            top: 0; /* ANCLADO AL BORDE SUPERIOR DE LA SECCIÓN ACTUAL */
+            top: 0; /* Anclado al top de la sección de 80px */
             left: 0;
             width: 100%;
             height: var(--wave-height); 
@@ -197,12 +203,15 @@
             </div>
         </header>
 
-        <section id="servicio" class="snap-section section-optimizado">
+        <div class="wave-only-separator sep-header-to-optimizado">
             <div class="wave-separator wave-from-header"> 
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
+        </div>
+
+        <section id="servicio" class="snap-section section-optimizado">
             <div class="content-wrapper">
                 <h2 class="reveal">⚡️ Nuestro Servicio: PC Rápida, Sin Salir de Casa (Trujillo)</h2>
                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Tu equipo solo necesita el software correcto. Hemos reducido el servicio a **dos promesas irrefutables** para asegurar la visibilidad.</p>
@@ -224,12 +233,15 @@
             </div>
         </section>
 
-        <section id="cursos" class="snap-section section-cursos">
+        <div class="wave-only-separator sep-optimizado-to-cursos">
             <div class="wave-separator wave-from-optimizado">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
+        </div>
+
+        <section id="cursos" class="snap-section section-cursos">
             <div class="content-wrapper">
                 <h2 class="reveal">🎓 Cursos Prácticos de Linux: Domina el Software Libre</h2>
                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Te enseñamos a usar Linux y el software de ofimática libre (documentos, hojas de cálculo) de forma sencilla, desde cero, ahorrándote costos de licencias.</p>
@@ -251,12 +263,15 @@
             </div>
         </section>
         
-        <section id="preguntas" class="snap-section section-beneficios">
+        <div class="wave-only-separator sep-cursos-to-beneficios">
             <div class="wave-separator wave-from-cursos">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
+        </div>
+
+        <section id="preguntas" class="snap-section section-beneficios">
             <div class="content-wrapper">
                 <h2 class="reveal">🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
                 <div class="benefits-qna">
@@ -272,12 +287,15 @@
             </div>
         </section>
         
-        <section id="contacto" class="snap-section section-final-cta">
+        <div class="wave-only-separator sep-beneficios-to-final">
             <div class="wave-separator wave-from-beneficios">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
+        </div>
+        
+        <section id="contacto" class="snap-section section-final-cta">
             <div class="content-wrapper">
                 <h2 style="color: var(--color-base); margin-bottom: 25px;" class="reveal">¡Listo para el salto a la tecnología libre y rápida!</h2>
                 <div class="cta-header">
@@ -312,21 +330,21 @@
 
         // Navegación Fija y Detección de Sección Activa
         const scrollContainer = document.querySelector('.scroll-container');
+        // Ahora seleccionamos tanto las secciones de contenido como las de onda (aunque solo nos importan los IDs)
+        const allSections = document.querySelectorAll('.snap-section, .wave-only-separator');
         const sections = document.querySelectorAll('.snap-section');
         const navLinks = document.querySelectorAll('.dot-navigation a');
 
         function updateNav() {
             let currentSection = '';
-            // Ajustamos el umbral para tener en cuenta el scroll-padding-top
-            // Detecta la sección cuando su contenido visible (después de la onda) entra en juego.
-            const waveHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--wave-height'));
-            const scrollThreshold = scrollContainer.scrollTop + waveHeight + 20; // Onda + un pequeño margen para mayor precisión
+            // Umbral para detección, generalmente el centro de la pantalla
+            const scrollCenter = scrollContainer.scrollTop + (scrollContainer.offsetHeight / 2);
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
 
-                if (scrollThreshold >= sectionTop && scrollThreshold < sectionTop + sectionHeight) {
+                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
                     currentSection = section.id;
                 }
             });
@@ -360,3 +378,4 @@
 
 </body>
 </html>
+
