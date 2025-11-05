@@ -1,560 +1,567 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khipu88 Linux Lab | Revive tu compu con Linux: Ahorra y aprende fácil</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khipu88 Linux Lab | Revive tu compu con Linux: Ahorra y aprende fácil</title>
 
-    <link rel="icon" type="image/png" href="ico.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <meta property="og:title" content="Khipu88 Linux Lab: Revive tu compu con Linux" />
-    <meta property="og:description" content="Extiende la vida útil de tu compu antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
-    <meta property="og:image" content="logoweb.webp" /> 
-    
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="icon" type="image/png" href="ico.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <meta property="og:title" content="Khipu88 Linux Lab: Revive tu compu con Linux" />
+    <meta property="og:description" content="Extiende la vida útil de tu compu antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
+    <meta property="og:image" content="logoweb.webp" /> 
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-    <style>
-        /* ========================================================== */
-        /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
-        /* ========================================================== */
-        :root {
-            --color-base: #000B36;           
-            --color-acento-primary: #00E1D5;  
-            --color-acento-secondary: #08D3FF;
-            --font-serif: 'DM Serif Text', serif; 
-            --font-sans: 'Quicksand', sans-serif;  
-        }
+    <style>
+        /* ========================================================== */
+        /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
+        /* ========================================================== */
+        :root {
+            --color-base: #000B36;           
+            --color-acento-primary: #00E1D5;  
+            --color-acento-secondary: #08D3FF;
+            --font-serif: 'DM Serif Text', serif; 
+            --font-sans: 'Quicksand', sans-serif;  
+        }
 
-        /* RESET Y ESTILOS BASE */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            line-height: 1.6; 
-            font-family: var(--font-sans);
-            background-color: #f9fafb;
-            overflow-x: hidden; 
-        }
+        /* RESET Y ESTILOS BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            line-height: 1.6; 
+            font-family: var(--font-sans);
+            background-color: #f9fafb;
+            overflow-x: hidden; 
+        }
 
-        /* ========================================================== */
-        /* 2. ESTRUCTURA Y TIPOGRAFÍA */
-        /* ========================================================== */
-        .scroll-container { height: auto; overflow-y: visible; }
-        .snap-section {
-            min-height: 100vh; 
-            height: auto; 
-            padding: 80px 20px; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;
-            margin: 0 auto;
-            text-align: center;
-            position: relative; 
-            overflow: hidden; 
-            /* Estilos base para las tramas de fondo */
-            background-repeat: repeat;
-            background-blend-mode: overlay; 
-        }
-        
-        /* Aseguramos que el contenido esté por encima de cualquier pseudo-elemento */
-        .content-wrapper { max-width: 1000px; width: 100%; margin: auto; position: relative; z-index: 2; }
+        /* ========================================================== */
+        /* 2. ESTRUCTURA Y TIPOGRAFÍA */
+        /* ========================================================== */
+        .scroll-container { height: auto; overflow-y: visible; }
+        .snap-section {
+            min-height: 100vh; 
+            height: auto; 
+            padding: 80px 20px; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+            margin: 0 auto;
+            text-align: center;
+            position: relative; 
+            overflow: hidden; 
+            /* Estilos base para las tramas de fondo */
+            background-repeat: repeat;
+            background-blend-mode: overlay; 
+        }
+        
+        /* Aseguramos que el contenido esté por encima de cualquier pseudo-elemento */
+        .content-wrapper { max-width: 1000px; width: 100%; margin: auto; position: relative; z-index: 2; }
 
-        /* Estilos de Tipografía */
-        header { 
-            color: white; 
-            position: relative; 
-            overflow: hidden; 
-        }
+        /* Estilos de Tipografía */
+        header { 
+            color: white; 
+            position: relative; 
+            overflow: hidden; 
+        }
 
-        /* Superposición oscura para legibilidad del texto sobre el video */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--color-base); 
-            opacity: 0.75; 
-            z-index: 1; 
-        }
+        /* Superposición oscura para legibilidad del texto sobre el video */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-base); 
+            opacity: 0.75; 
+            z-index: 1; 
+        }
 
-        /* Estilos para el video de fondo */
-        .video-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            transform: translate(-50%, -50%);
-            z-index: 0; 
-        }
+        /* Estilos para el video de fondo */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transform: translate(-50%, -50%);
+            z-index: 0; 
+        }
 
-        /* Estilos de Header Centrado */
-        header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
-        header h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 15px; font-family: var(--font-serif); line-height: 1.1; } 
-        header p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #d1d5db; max-width: 750px; margin: 0 auto 30px; }
-        
-        h2 { color: var(--color-base); margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-family: var(--font-serif); line-height: 1.2; }
-        h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
+        /* Estilos de Header Centrado */
+        header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
+        header h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 15px; font-family: var(--font-serif); line-height: 1.1; } 
+        header p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #d1d5db; max-width: 750px; margin: 0 auto 30px; }
+        
+        h2 { color: var(--color-base); margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-family: var(--font-serif); line-height: 1.2; }
+        h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
 
-        /* Estilo: Subtítulos de Secciones 2, 3 y 4 */
-        .subtitle {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #4b5563; 
-            max-width: 750px; 
-            margin: 0 auto 40px; 
-        }
-        
-        /* ========================================================== */
-        /* FONDOS DE SECCIÓN CON TRAMAS GEOMÉTRICAS 3D Y OPACIDAD AJUSTADA */
-        /* ========================================================== */
-        
-        .section-header-bg { /* Selector vacío */ } 
-        
-        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) */
-        .section-servicio { 
-            background-color: #f9fafb; 
-            background-image: 
-                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
-            
-            background-size: 30px 52px; 
-            background-blend-mode: overlay;
-        } 
-        
-        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) */
-        .section-talleres { 
-            background-color: #eef2ff; 
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg, 
-                    rgba(0, 0, 0, 0.15) 0, 
-                    rgba(0, 0, 0, 0.15) 2px,
-                    transparent 2px,
-                    transparent 40px
-                ),
-                repeating-linear-gradient(
-                    45deg,
-                    rgba(0, 0, 0, 0.15) 0, 
-                    rgba(0, 0, 0, 0.15) 2px,
-                    transparent 2px,
-                    transparent 40px
-                );
-            background-size: 40px 40px; 
-            background-blend-mode: overlay;
-        } 
-        
-        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - ESTILO DE ESCRITORIO */
-        .section-beneficios { 
-            background-color: #f9fafb; 
-            background-image: 
-                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
-            
-            background-size: 30px 52px; 
-            background-position: 0 0, 0 0, 0 0;
-            background-repeat: repeat;
-            background-blend-mode: overlay;
-            position: relative; 
-            overflow: hidden; 
-        }
+        /* Estilo: Subtítulos de Secciones 2, 3 y 4 */
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #4b5563; 
+            max-width: 750px; 
+            margin: 0 auto 40px; 
+        }
+        
+        /* ========================================================== */
+        /* FONDOS DE SECCIÓN CON TRAMAS GEOMÉTRICAS 3D Y OPACIDAD AJUSTADA */
+        /* ========================================================== */
+        
+        .section-header-bg { /* Selector vacío */ } 
+        
+        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) */
+        .section-servicio { 
+            background-color: #f9fafb; 
+            background-image: 
+                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
+            
+            background-size: 30px 52px; 
+            background-blend-mode: overlay;
+        } 
+        
+        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) */
+        .section-talleres { 
+            background-color: #eef2ff; 
+            background-image: 
+                repeating-linear-gradient(
+                    -45deg, 
+                    rgba(0, 0, 0, 0.15) 0, 
+                    rgba(0, 0, 0, 0.15) 2px,
+                    transparent 2px,
+                    transparent 40px
+                ),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.15) 0, 
+                    rgba(0, 0, 0, 0.15) 2px,
+                    transparent 2px,
+                    transparent 40px
+                );
+            background-size: 40px 40px; 
+            background-blend-mode: overlay;
+        } 
+        
+        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - ¡NUEVA CORRECCIÓN Y EFECTOS! */
+        .section-beneficios { 
+            background-color: #f9fafb; 
+            background-image: 
+                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
+            
+            background-size: 30px 52px; 
+            background-position: 0 0, 0 0, 0 0;
+            background-repeat: repeat;
+            background-blend-mode: overlay;
+            position: relative; 
+            overflow: hidden; 
+        }
 
-        /* Pseudo-elemento para mostrar solo la imagen de Tux con opacidad, COLOR y efecto parallax */
-        .section-beneficios::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; 
-            
-            background-image: url('tux-bg.webp');
-            background-size: 1100px; /* Tamaño para escritorio */
-            background-position: right 50%; /* Posición para escritorio */
-            background-repeat: no-repeat;
-            
-            opacity: 0.35; 
-            background-blend-mode: normal; 
-            
-            background-attachment: fixed; /* Efecto Parallax */
-        }
-        
-        /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) */
-        .section-final-cta { 
-            background-color: var(--color-acento-primary); 
-            color: var(--color-base); 
-            padding: 80px 20px; 
-            background-image: 
-                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
-                linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%), 
-                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%); 
-            
-            background-size: 50px 50px; 
-            background-position: 0 0, 0 25px, 25px -25px, -25px 0px; 
-            background-blend-mode: overlay;
-        }
+        /* Pseudo-elemento para mostrar solo la imagen de Tux con opacidad, COLOR y efecto parallax */
+        .section-beneficios::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
+            
+            background-image: url('tux-bg.webp');
+            background-size: 1100px; /* Tux más grande */
+            background-position: right 50%; /* A la derecha, centrado verticalmente */
+            background-repeat: no-repeat;
+            
+            opacity: 0.35; /* Opacidad de Tux */
+            /* filter: grayscale(100%); <-- ELIMINADO para ver el color */
+            background-blend-mode: normal; /* Para ver colores y permitir que la trama se superponga */
+            
+            background-attachment: fixed; /* Efecto Parallax */
+        }
+        
+        /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) */
+        .section-final-cta { 
+            background-color: var(--color-acento-primary); 
+            color: var(--color-base); 
+            padding: 80px 20px; 
+            background-image: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%); 
+            
+            background-size: 50px 50px; 
+            background-position: 0 0, 0 25px, 25px -25px, -25px 0px; 
+            background-blend-mode: overlay;
+        }
 
-        /* ========================================================== */
-        /* 3. BOTONES Y TARJETAS */
-        /* ========================================================== */
-        
-        /* CTA BOTÓN ÚNICO */
-        .cta-btn { 
-            display: inline-block; background: var(--color-acento-primary); 
-            color: var(--color-base); padding: 18px 40px; 
-            border-radius: 50px; text-decoration: none; 
-            font-weight: bold; font-size: 1.15rem; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 6px 15px rgba(0, 225, 213, 0.4); 
-            margin-top: 30px; 
-        }
-        
-        .cta-btn:hover { 
-            background: var(--color-acento-secondary); 
-            transform: scale(1.05); 
-            color: white; 
-            box-shadow: 0 8px 20px rgba(8, 211, 255, 0.6);
-        }
+        /* ========================================================== */
+        /* 3. BOTONES Y TARJETAS */
+        /* ========================================================== */
+        
+        /* CTA BOTÓN ÚNICO */
+        .cta-btn { 
+            display: inline-block; background: var(--color-acento-primary); 
+            color: var(--color-base); padding: 18px 40px; 
+            border-radius: 50px; text-decoration: none; 
+            font-weight: bold; font-size: 1.15rem; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 6px 15px rgba(0, 225, 213, 0.4); 
+            margin-top: 30px; 
+        }
+        
+        .cta-btn:hover { 
+            background: var(--color-acento-secondary); 
+            transform: scale(1.05); 
+            color: white; 
+            box-shadow: 0 8px 20px rgba(8, 211, 255, 0.6);
+        }
 
-        /* Estilo para los 3 Beneficios */
-        .grid-3-cards { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
-            margin-top: 40px;
-        }
+        /* Estilo para los 3 Beneficios */
+        .grid-3-cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px;
+        }
 
-        .card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            text-align: left; 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 6px 15px rgba(0,0,0,0.05); 
-            border: 1px solid #e5e7eb;
-        }
-        .card:hover {
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border-color: var(--color-acento-primary);
-        }
-        
-        /* Iconos de las Cards */
-        .card-icon {
-            font-size: 2.2rem;
-            color: var(--color-acento-primary);
-            margin-bottom: 10px;
-            display: block;
-        }
-        .card h3 { 
-            margin-top: 0;
-            margin-bottom: 10px; 
-            font-size: 1.3rem; 
-            color: var(--color-base);
-        }
-        .card p { font-size: 1rem; color: #4b5563; }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-align: left; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05); 
+            border: 1px solid #e5e7eb;
+        }
+        .card:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border-color: var(--color-acento-primary);
+        }
+        
+        /* Iconos de las Cards */
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--color-acento-primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .card h3 { 
+            margin-top: 0;
+            margin-bottom: 10px; 
+            font-size: 1.3rem; 
+            color: var(--color-base);
+        }
+        .card p { font-size: 1rem; color: #4b5563; }
 
-        /* Estilos específicos para el CTA Final */
-        .section-final-cta h2 { color: var(--color-base); line-height: 1.2; }
-        .section-final-cta p { font-size: 1.3rem; margin-top: -15px; color: #1f2937; }
-        .section-final-cta .cta-btn { 
-            background: var(--color-base); 
-            color: var(--color-acento-primary); 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin-bottom: 40px; 
-        }
-        .section-final-cta .cta-btn:hover { 
-            background: #111827; 
-            color: var(--color-acento-secondary); 
-            transform: scale(1.05); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
-        }
+        /* Estilos específicos para el CTA Final */
+        .section-final-cta h2 { color: var(--color-base); line-height: 1.2; }
+        .section-final-cta p { font-size: 1.3rem; margin-top: -15px; color: #1f2937; }
+        .section-final-cta .cta-btn { 
+            background: var(--color-base); 
+            color: var(--color-acento-primary); 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px; 
+        }
+        .section-final-cta .cta-btn:hover { 
+            background: #111827; 
+            color: var(--color-acento-secondary); 
+            transform: scale(1.05); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
+        }
 
-        /* ========================================================== */
-        /* 4. NAVEGACIÓN Y FOOTER */
-        /* ========================================================== */
-        footer { position: relative; background: var(--color-base); color: #9ca3af; text-align: center; padding: 15px 20px; font-size: 0.9rem; position: absolute; bottom: 0; left: 0; width: 100%; }
-        
-        /* Íconos sociales en la sección final */
-        .social-icons { 
-            margin-top: 0; 
-            margin-bottom: 20px; 
-            display: flex; 
-            gap: 30px; 
-            justify-content: center; 
-        }
-        .social-icons a { 
-            color: var(--color-base); 
-            font-size: 2.5rem; 
-            transition: color 0.3s ease, transform 0.3s ease; 
-        }
-        .social-icons a:hover { 
-            color: #1f2937; 
-            transform: scale(1.15); 
-        }
-        
-        /* Navegación por Puntos */
-        .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
-        .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
-        .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid var(--color-base); transform: scale(1.2); }
-        /* Ajuste para que los puntos se vean sobre el video (fondo oscuro) */
-        header + .dot-navigation a { 
-            background: rgba(255, 255, 255, 0.7); 
-            border: 2px solid var(--color-acento-primary); 
-        }
-        header + .dot-navigation a.active { 
-            background: var(--color-acento-primary); 
-            border: 2px solid white; 
-        }
-    </style>
+        /* ========================================================== */
+        /* 4. RESPONSIVIDAD Y NAVEGACIÓN Y FOOTER (AJUSTE DE ÍCONOS) */
+        /* ========================================================== */
+        footer { position: relative; background: var(--color-base); color: #9ca3af; text-align: center; padding: 15px 20px; font-size: 0.9rem; position: absolute; bottom: 0; left: 0; width: 100%; }
+        
+        /* Íconos sociales en la sección final */
+        .social-icons { 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+            display: flex; 
+            gap: 30px; 
+            justify-content: center; 
+        }
+        .social-icons a { 
+            color: var(--color-base); 
+            font-size: 2.5rem; 
+            transition: color 0.3s ease, transform 0.3s ease; 
+        }
+        .social-icons a:hover { 
+            color: #1f2937; 
+            transform: scale(1.15); 
+        }
+        
+        /* Navegación por Puntos */
+        .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
+        .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
+        .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid var(--color-base); transform: scale(1.2); }
+        /* Ajuste para que los puntos se vean sobre el video (fondo oscuro) */
+        header + .dot-navigation a { 
+            background: rgba(255, 255, 255, 0.7); 
+            border: 2px solid var(--color-acento-primary); 
+        }
+        header + .dot-navigation a.active { 
+            background: var(--color-acento-primary); 
+            border: 2px solid white; 
+        }
+        
+        /* Media Queries para responsividad */
+        @media (max-width: 600px) {
+            .snap-section { min-height: 80vh; padding: 50px 20px; }
+            .dot-navigation { display: none !important; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="dot-navigation">
-        <a href="#inicio" data-section="inicio" class="active">Inicio</a>
-        <a href="#servicio" data-section="servicio">Servicio</a>
-        <a href="#talleres" data-section="talleres">Talleres</a>
-        <a href="#porque" data-section="porque">¿Por qué?</a>
-        <a href="#contacto" data-section="contacto">Contacto</a>
-    </nav>
-    
-    <div class="scroll-container">
+    <nav class="dot-navigation">
+        <a href="#inicio" data-section="inicio" class="active">Inicio</a>
+        <a href="#servicio" data-section="servicio">Servicio</a>
+        <a href="#talleres" data-section="talleres">Talleres</a>
+        <a href="#porque" data-section="porque">¿Por qué?</a>
+        <a href="#contacto" data-section="contacto">Contacto</a>
+    </nav>
+    
+    <div class="scroll-container">
 
-        <header id="inicio" class="snap-section section-header-bg">
-            
-            <video class="video-background" autoplay muted loop playsinline poster="poster.png">
-                <source src="videofondo.mp4" type="video/mp4">
-                <source src="videofondo.webm" type="video/webm">
-                Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="content-wrapper">
-                <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
-                <h1 class="reveal">¡No botes tu compu lenta! <br> ¡Dale una nueva vida!</h1>
-                <p class="reveal">Optimizamos tu compu con Linux, más rápida y segura que nunca. Además, aprende a sacarle el máximo provecho con nuestros talleres.</p>
-                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn primary reveal">💡 Quiero más información</a>
-            </div>
-        </header>
+        <header id="inicio" class="snap-section section-header-bg">
+            
+            <video class="video-background" autoplay muted loop playsinline poster="poster.png">
+                <source src="videofondo.mp4" type="video/mp4">
+                <source src="videofondo.webm" type="video/webm">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="content-wrapper">
+                <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
+                <h1 class="reveal">¡No botes tu compu lenta! <br> ¡Dale una nueva vida!</h1>
+                <p class="reveal">Optimizamos tu compu con Linux, más rápida y segura que nunca. Además, aprende a sacarle el máximo provecho con nuestros talleres.</p>
+                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn primary reveal">💡 Quiero más información</a>
+            </div>
+        </header>
 
-        <section id="servicio" class="snap-section section-servicio">
-            <div class="content-wrapper">
-                <h2 class="reveal">¡Optimizamos tu compu!</h2>
-                <p class="subtitle reveal">Hacemos que tu equipo siga siendo útil.</p>
-                
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-rocket"></i>
-                        <h3>Velocidad extrema sin costo alto</h3>
-                        <p>Linux es ligero y utiliza menos recursos. Al combinarlo con un **SSD o RAM** recomendado, tu PC volará sin gastar en una nueva.</p>
-                    </div>
-                    <div class="card reveal-stagger"> 
-                        <i class="card-icon fas fa-recycle"></i>
-                        <h3>Ahorro genuino y reciclaje inteligente</h3>
-                        <p>Alargas la vida útil de tu hardware por años, contribuyes al planeta y ahorras dinero que puedes invertir en tu familia.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-shield-alt"></i>
-                        <h3>Máxima seguridad y privacidad garantizada</h3>
-                        <p>Olvídate de los antivirus caros y las amenazas constantes. Linux es robusto y te da tranquilidad para navegar y trabajar.</p>
-                    </div>
-                </div>
-                
-                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
-            </div>
-        </section>
+        <section id="servicio" class="snap-section section-servicio">
+            <div class="content-wrapper">
+                <h2 class="reveal">¡Optimizamos tu compu!</h2>
+                <p class="subtitle reveal">Hacemos que tu equipo siga siendo útil.</p>
+                
+                <div class="grid-3-cards">
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-rocket"></i>
+                        <h3>Velocidad extrema sin costo alto</h3>
+                        <p>Linux es ligero y utiliza menos recursos. Al combinarlo con un **SSD o RAM** recomendado, tu PC volará sin gastar en una nueva.</p>
+                    </div>
+                    <div class="card reveal-stagger"> 
+                        <i class="card-icon fas fa-recycle"></i>
+                        <h3>Ahorro genuino y reciclaje inteligente</h3>
+                        <p>Alargas la vida útil de tu hardware por años, contribuyes al planeta y ahorras dinero que puedes invertir en tu familia.</p>
+                    </div>
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-shield-alt"></i>
+                        <h3>Máxima seguridad y privacidad garantizada</h3>
+                        <p>Olvídate de los antivirus caros y las amenazas constantes. Linux es robusto y te da tranquilidad para navegar y trabajar.</p>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
+            </div>
+        </section>
 
-        <section id="talleres" class="snap-section section-talleres">
-            <div class="content-wrapper">
-                <h2 class="reveal">Te preparamos con nuestros talleres.</h2>
-                <p class="subtitle reveal">Da el salto a lo digital sin miedo: cursos para todos.</p>
-                
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-user-graduate"></i>
-                        <h3>Aprende de 0, sin tecnicismos</h3>
-                        <p>Nuestro método está diseñado para personas de todas las edades que nunca han usado Linux (o una PC). Sencillez garantizada.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-file-invoice"></i>
-                        <h3>Dominio de ofimática e internet</h3>
-                        <p>Te enseñamos a usar herramientas gratuitas (LibreOffice) y a navegar seguro. Libérate de costosas licencias.</p>
-                    </div>
-                    
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-laptop-house"></i>
-                        <h3>Modalidad virtual o a domicilio</h3>
-                        <p>¡Aprendes desde donde estés! Cursos online flexibles para todo el mundo, o presenciales si estás en Trujillo.</p>
-                    </div>
-                    
-                </div>
-                
-                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
-            </div>
-        </section>
-        
-        <section id="porque" class="snap-section section-beneficios">
-            <div class="content-wrapper">
-                <h2 class="reveal">¿Por qué elegir linux?</h2>
-                <p class="subtitle reveal">Muchas personas creen que Linux es solo para expertos. ¡Te demostramos lo contrario!</p>
-                
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-hand-holding-usd"></i>
-                        <h3>Cero costo en licencias y software</h3>
-                        <p>Linux es Software Libre. Nunca pagarás por el sistema operativo, ni por la ofimática (como LibreOffice), ni por la mayoría de las herramientas que necesitas. Ahorro 100% garantizado.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-tachometer-alt"></i>
-                        <h3>El rey de la velocidad en equipos antiguos</h3>
-                        <p>Diseñado para ser ligero y eficiente. Linux no tiene procesos pesados innecesarios, lo que garantiza que tu PC antigua funcione más rápido y de manera más estable que nunca.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-paw"></i>
-                        <h3>El Guardián: Adiós a los virus y el espionaje</h3>
-                        <p>Gracias a **Tux** y la comunidad de Software Libre, Linux es inherentemente más seguro y te da privacidad total. Las vulnerabilidades se corrigen de inmediato, sin necesidad de antivirus costosos.</p>
-                    </div>
-                </div>
+        <section id="talleres" class="snap-section section-talleres">
+            <div class="content-wrapper">
+                <h2 class="reveal">Te preparamos con nuestros talleres.</h2>
+                <p class="subtitle reveal">Da el salto a lo digital sin miedo: cursos para todos.</p>
+                
+                <div class="grid-3-cards">
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-user-graduate"></i>
+                        <h3>Aprende de 0, sin tecnicismos</h3>
+                        <p>Nuestro método está diseñado para personas de todas las edades que nunca han usado Linux (o una PC). Sencillez garantizada.</p>
+                    </div>
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-file-invoice"></i>
+                        <h3>Dominio de ofimática e internet</h3>
+                        <p>Te enseñamos a usar herramientas gratuitas (LibreOffice) y a navegar seguro. Libérate de costosas licencias.</p>
+                    </div>
+                    
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-laptop-house"></i>
+                        <h3>Modalidad virtual o a domicilio</h3>
+                        <p>¡Aprendes desde donde estés! Cursos online flexibles para todo el mundo, o presenciales si estás en Trujillo.</p>
+                    </div>
+                    
+                </div>
+                
+                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
+            </div>
+        </section>
+        
+        <section id="porque" class="snap-section section-beneficios">
+            <div class="content-wrapper">
+                <h2 class="reveal">¿Por qué elegir linux?</h2>
+                <p class="subtitle reveal">Muchas personas creen que Linux es solo para expertos. ¡Te demostramos lo contrario!</p>
+                
+                <div class="grid-3-cards">
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-hand-holding-usd"></i>
+                        <h3>Cero costo en licencias y software</h3>
+                        <p>Linux es Software Libre. Nunca pagarás por el sistema operativo, ni por la ofimática (como LibreOffice), ni por la mayoría de las herramientas que necesitas. Ahorro 100% garantizado.</p>
+                    </div>
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-tachometer-alt"></i>
+                        <h3>El rey de la velocidad en equipos antiguos</h3>
+                        <p>Diseñado para ser ligero y eficiente. Linux no tiene procesos pesados innecesarios, lo que garantiza que tu PC antigua funcione más rápido y de manera más estable que nunca.</p>
+                    </div>
+                    <div class="card reveal-stagger">
+                        <i class="card-icon fas fa-paw"></i>
+                        <h3>El Guardián: Adiós a los virus y el espionaje</h3>
+                        <p>Gracias a **Tux** y la comunidad de Software Libre, Linux es inherentemente más seguro y te da privacidad total. Las vulnerabilidades se corrigen de inmediato, sin necesidad de antivirus costosos.</p>
+                    </div>
+                </div>
 
-                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
-            </div>
-        </section>
-        
-        <section id="contacto" class="snap-section section-final-cta">
-            <div class="content-wrapper">
-                <h2 class="reveal">🚀 El cambio es fácil cuando tienes el equipo y la formación correcta.</h2>
-                <p class="reveal">Estamos listos para ayudarte a dar el salto.</p>
-                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn primary reveal">💡 Quiero más información</a>
-                
-                <div class="social-icons reveal">
-                    <a href="https://www.facebook.com/khipu88pe" target="_blank" aria-label="Visita nuestro Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/khipu88pe" target="_blank" aria-label="Visita nuestro Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:khipu88@gmail.com" aria-label="Envíanos un correo electrónico"><i class="fas fa-envelope"></i></a>
-            </div>
-            </div>
-            
-            <footer>
-                © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
-            </footer>
-        </section>
+                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn reveal">💡 Quiero más información</a>
+            </div>
+        </section>
+        
+        <section id="contacto" class="snap-section section-final-cta">
+            <div class="content-wrapper">
+                <h2 class="reveal">🚀 El cambio es fácil cuando tienes el equipo y la formación correcta.</h2>
+                <p class="reveal">Estamos listos para ayudarte a dar el salto.</p>
+                <a href="https://wa.me/51961468282?text=Hola%20%F0%9F%AA%A2Khipu88%2C%20quisiera%20más%20información%20de%20sus%20servicios" class="cta-btn primary reveal">💡 Quiero más información</a>
+                
+                <div class="social-icons reveal">
+                    <a href="https://www.facebook.com/khipu88pe" target="_blank" aria-label="Visita nuestro Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/khipu88pe" target="_blank" aria-label="Visita nuestro Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:khipu88@gmail.com" aria-label="Envíanos un correo electrónico"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <footer>
+                © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
+            </footer>
+        </section>
 
-    </div> 
+    </div> 
 
-    <script>
-        // CONFIGURACIÓN BASE DEL REVELADO
-        const defaultReveal = {
-            delay: 150,
-            distance: '40px',
-            easing: 'ease-in-out',
-            reset: true, 
-            duration: 500, 
-            viewFactor: 0.5 
-        };
+    <script>
+        // CONFIGURACIÓN BASE DEL REVELADO
+        const defaultReveal = {
+            delay: 150,
+            distance: '40px',
+            easing: 'ease-in-out',
+            reset: true, 
+            duration: 500, 
+            viewFactor: 0.5 
+        };
 
-        // Aplicar ScrollReveal a diferentes elementos con orígenes variados
+        // Aplicar ScrollReveal a diferentes elementos con orígenes variados
 
-        // Sección INICIO (Logo, Título, Párrafo, Botón)
-        ScrollReveal().reveal('#inicio .reveal', { ...defaultReveal, origin: 'bottom' });
+        // Sección INICIO (Logo, Título, Párrafo, Botón)
+        ScrollReveal().reveal('#inicio .reveal', { ...defaultReveal, origin: 'bottom' });
 
-        // Sección SERVICIO (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#servicio h2, #servicio .subtitle, #servicio .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'right', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#servicio .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        // Sección SERVICIO (H2, Subtítulo, Botón)
+        ScrollReveal().reveal('#servicio h2, #servicio .subtitle, #servicio .cta-btn', { 
+            ...defaultReveal, 
+            origin: 'right', 
+            distance: '50px' 
+        });
+        // Las tarjetas aparecen de abajo
+        ScrollReveal().reveal('#servicio .reveal-stagger', {
+            ...defaultReveal,
+            delay: 200, 
+            interval: 150,
+            origin: 'bottom'
+        });
 
-        // Sección TALLERES (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#talleres h2, #talleres .subtitle, #talleres .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'left', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#talleres .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        // Sección TALLERES (H2, Subtítulo, Botón)
+        ScrollReveal().reveal('#talleres h2, #talleres .subtitle, #talleres .cta-btn', { 
+            ...defaultReveal, 
+            origin: 'left', 
+            distance: '50px' 
+        });
+        // Las tarjetas aparecen de abajo
+        ScrollReveal().reveal('#talleres .reveal-stagger', {
+            ...defaultReveal,
+            delay: 200, 
+            interval: 150,
+            origin: 'bottom'
+        });
 
-        // Sección ¿POR QUÉ? (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#porque h2, #porque .subtitle, #porque .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'top', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#porque .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        // Sección ¿POR QUÉ? (H2, Subtítulo, Botón)
+        ScrollReveal().reveal('#porque h2, #porque .subtitle, #porque .cta-btn', { 
+            ...defaultReveal, 
+            origin: 'top', 
+            distance: '50px' 
+        });
+        // Las tarjetas aparecen de abajo
+        ScrollReveal().reveal('#porque .reveal-stagger', {
+            ...defaultReveal,
+            delay: 200, 
+            interval: 150,
+            origin: 'bottom'
+        });
 
-        // Sección CONTACTO (H2, Párrafo, Botón, Íconos Sociales)
-        ScrollReveal().reveal('#contacto .reveal', { 
-            ...defaultReveal, 
-            origin: 'bottom' 
-        });
+        // Sección CONTACTO (H2, Párrafo, Botón, Íconos Sociales)
+        ScrollReveal().reveal('#contacto .reveal', { 
+            ...defaultReveal, 
+            origin: 'bottom' 
+        });
 
 
-        // Navegación Fija y Detección de Sección Activa
-        const sections = document.querySelectorAll('.snap-section');
-        const navLinks = document.querySelectorAll('.dot-navigation a');
+        // Navegación Fija y Detección de Sección Activa
+        const sections = document.querySelectorAll('.snap-section');
+        const navLinks = document.querySelectorAll('.dot-navigation a');
 
-        function updateNav() {
-            let currentSection = '';
-            const scrollCenter = window.scrollY + (window.innerHeight / 2);
+        function updateNav() {
+            let currentSection = '';
+            const scrollCenter = window.scrollY + (window.innerHeight / 2);
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
 
-                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
-                    currentSection = section.id;
-                }
-            });
+                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
+                    currentSection = section.id;
+                }
+            });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-section') === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        }
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
 
-        window.addEventListener('scroll', updateNav);
-        updateNav();
+        window.addEventListener('scroll', updateNav);
+        updateNav();
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
