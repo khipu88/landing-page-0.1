@@ -134,14 +134,14 @@
             background-image: 
                 repeating-linear-gradient(
                     -45deg, 
-                    rgba(0, 0, 0, 0.15) 0, /* Opacidad Muy Reducida */
+                    rgba(0, 0, 0, 0.15) 0, 
                     rgba(0, 0, 0, 0.15) 2px,
                     transparent 2px,
                     transparent 40px
                 ),
                 repeating-linear-gradient(
                     45deg,
-                    rgba(0, 0, 0, 0.15) 0, /* Opacidad Muy Reducida */
+                    rgba(0, 0, 0, 0.15) 0, 
                     rgba(0, 0, 0, 0.15) 2px,
                     transparent 2px,
                     transparent 40px
@@ -150,33 +150,29 @@
             background-blend-mode: overlay;
         } 
         
-        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - Opacidad y posición */
+        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - AJUSTES PARA SER MÁS GRANDE Y A LA DERECHA */
         .section-beneficios { 
-            background-color: #f9fafb; /* Color de fondo base */
-            background-image: url('tux-bg.webp'), /* 💡 Agregado: Imagen de Tux */
+            background-color: #f9fafb; 
+            background-image: url('tux-bg.webp'), 
                               linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
                               linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
                               linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
             
             background-size: 
-                contain, /* La imagen de Tux se ajusta sin cortarse */
-                30px 52px; /* Tamaño para la trama geométrica */
+                800px, /* TUX: Más grande */
+                30px 52px; 
             background-position: 
-                center center, /* Tux centrado */
-                0 0, 0 0, 0 0; /* Trama geométrica */
+                right center, /* TUX: A la derecha y centrado verticalmente */
+                0 0, 0 0, 0 0; 
             background-repeat: 
-                no-repeat, /* Tux no se repite */
-                repeat; /* La trama geométrica sí se repite */
+                no-repeat, 
+                repeat; 
             background-blend-mode: 
-                luminosity, /* Modo de mezcla para Tux para un efecto más sutil */
-                overlay; /* Modo de mezcla para la trama geométrica */
-            opacity: 0.1; /* 💡 Ajuste: Opacidad para que Tux sea un fondo muy sutil */
-            transition: opacity 0.5s ease; /* Suaviza el cambio de opacidad si se animara */
-        }
-        /* Ajuste de opacidad para el texto y contenido de esta sección si la imagen es muy dominante */
-        .section-beneficios .content-wrapper {
-             /* Puedes ajustar la opacidad del contenido si la imagen de fondo es muy fuerte.
-                En este caso, ajustamos la opacidad de la imagen en sí, por lo que el contenido no necesita ajuste extra. */
+                luminosity, 
+                overlay; 
+            
+            opacity: 0.35; /* TUX: Más visible */
+            transition: opacity 0.5s ease; 
         }
         
         /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) - BLANCO y Opacidad 5% (AJUSTADA) */
@@ -358,7 +354,7 @@
                         <i class="card-icon fas fa-recycle"></i>
                         <h3>Ahorro genuino y reciclaje inteligente</h3>
                         <p>Alargas la vida útil de tu hardware por años, contribuyes al planeta y ahorras dinero que puedes invertir en tu familia.</p>
-                    L</div>
+                    </div>
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-shield-alt"></i>
                         <h3>Máxima seguridad y privacidad garantizada</h3>
