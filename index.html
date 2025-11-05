@@ -22,9 +22,9 @@
         /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
         /* ========================================================== */
         :root {
-            --color-base: #000B36;             
+            --color-base: #000B36;           
             --color-acento-primary: #00E1D5;   
-            --color-acento-secondary: #08D3FF; 
+            --color-acento-secondary: #08D3FF;
             --font-serif: 'DM Serif Text', serif; 
             --font-sans: 'Quicksand', sans-serif;  
         }
@@ -63,11 +63,35 @@
 
         /* Estilos de Tipografía */
         header { 
-            background: var(--color-base); 
+            /* MODIFICADO: Se quita el fondo de color, lo maneja el video y el overlay */
             color: white; 
-            /* NO VIDEO: Fondo simple de color base */
             position: relative; 
             overflow: hidden; 
+        }
+
+        /* AÑADIDO: Superposición oscura para legibilidad del texto sobre el video */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-base); /* Color base oscuro */
+            opacity: 0.75; /* AJUSTA ESTA OPACIDAD (0.7 a 0.85 recomendado) */
+            z-index: 1; /* Se pone entre el video y el contenido */
+        }
+
+        /* AÑADIDO: Estilos para el video de fondo */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Clave para que el video cubra todo sin distorsionarse */
+            transform: translate(-50%, -50%);
+            z-index: 0; /* Detrás de todo el contenido y la superposición */
         }
 
         /* Estilos de Header Centrado (REVERTIDO) */
@@ -79,33 +103,69 @@
         h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
 
         /* FONDOS DE SECCIÓN ALTERNADOS CON TRAMAS (SE MANTIENEN) */
-        .section-header-bg { background: var(--color-base); } 
+        .section-header-bg { /* Este selector ahora solo aplica al header */ } 
         
+        /* MODIFICADO: TRAMAS DE QUIPUS */
         .section-servicio { 
             background-color: #f9fafb;
-            /* Trama 1: Círculos o Líneas Abstractas */
-            background-image: url('https://www.transparenttextures.com/patterns/connected-world.png');
-            background-size: 200px;
+            /* Trama 1: Quipu Sutil */
+            background-image: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.9)),
+                            repeating-linear-gradient(
+                                to right,
+                                rgba(0, 0, 0, 0.03) 0px, 
+                                rgba(0, 0, 0, 0.03) 1px,
+                                transparent 1px,
+                                transparent 20px 
+                            );
+            background-size: cover, 20px 100%;
+            background-blend-mode: normal, overlay;
         } 
         
         .section-talleres { 
             background-color: #eef2f7; 
-            /* Trama 2: Geometría Suave (Cubos) */
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-            background-size: 150px;
+            /* Trama 2: Quipu Sutil sobre fondo más oscuro */
+            background-image: linear-gradient(rgba(238, 242, 247, 0.9), rgba(238, 242, 247, 0.9)),
+                            repeating-linear-gradient(
+                                to right,
+                                rgba(0, 0, 0, 0.03) 0px, 
+                                rgba(0, 0, 0, 0.03) 1px,
+                                transparent 1px,
+                                transparent 20px 
+                            );
+            background-size: cover, 20px 100%;
+            background-blend-mode: normal, overlay;
         }  
         
         .section-beneficios { 
             background-color: #f9fafb;
-            /* Trama 3: Malla o Puntos */
-            background-image: url('https://www.transparenttextures.com/patterns/dot-grid.png');
-            background-size: 50px;
+            /* Trama 3: Quipu Sutil */
+            background-image: linear-gradient(rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.9)),
+                            repeating-linear-gradient(
+                                to right,
+                                rgba(0, 0, 0, 0.03) 0px, 
+                                rgba(0, 0, 0, 0.03) 1px,
+                                transparent 1px,
+                                transparent 20px 
+                            );
+            background-size: cover, 20px 100%;
+            background-blend-mode: normal, overlay;
         }  
         
         .section-final-cta { 
             background: var(--color-acento-primary); 
             color: var(--color-base); 
             padding: 80px 20px; 
+            /* Trama 4: Quipu Sutil sobre color de acento */
+            background-image: linear-gradient(rgba(0, 225, 213, 0.9), rgba(0, 225, 213, 0.9)),
+                            repeating-linear-gradient(
+                                to right,
+                                rgba(0, 11, 54, 0.05) 0px, /* Líneas oscuras (azul base) */
+                                rgba(0, 11, 54, 0.05) 1px,
+                                transparent 1px,
+                                transparent 20px 
+                            );
+            background-size: cover, 20px 100%;
+            background-blend-mode: normal, overlay;
         }
 
         /* ========================================================== */
@@ -203,8 +263,15 @@
         .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
         .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
         .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid var(--color-base); transform: scale(1.2); }
-        header + .dot-navigation a { background: rgba(255, 255, 255, 0.7); border: 2px solid var(--color-acento-primary); }
-        header + .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid white; }
+        /* Ajuste para que los puntos se vean sobre el video (fondo oscuro) */
+        header + .dot-navigation a { 
+            background: rgba(255, 255, 255, 0.7); 
+            border: 2px solid var(--color-acento-primary); 
+        }
+        header + .dot-navigation a.active { 
+            background: var(--color-acento-primary); 
+            border: 2px solid white; 
+        }
         
         /* Media Queries para responsividad */
         @media (max-width: 600px) {
@@ -226,6 +293,12 @@
     <div class="scroll-container">
 
         <header id="inicio" class="snap-section section-header-bg">
+            
+            <video class="video-background" autoplay muted loop playsinline poster="poster.png">
+                <source src="videofondo.mp4" type="video/mp4">
+                <source src="videofondo.webm" type="video/webm">
+                Tu navegador no soporta videos HTML5.
+            </video>
             <div class="content-wrapper">
                 <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
                 <h1 class="reveal">¡No botes tu compu lenta! <br> ¡Dale una nueva vida!</h1>
@@ -392,5 +465,3 @@
 
 </body>
 </html>
-
-
