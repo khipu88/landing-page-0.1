@@ -48,11 +48,9 @@
             scroll-padding-top: 0; 
         }
         
-        /* Estilos para las secciones de contenido (Header, Servicio, Cursos, etc.) */
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            /* AJUSTE CLAVE: Padding al fondo para que la onda de 80px no tape el contenido */
             padding: 40px 20px 80px; 
             display: flex; 
             flex-direction: column;
@@ -60,8 +58,19 @@
             align-items: center;
             margin: 0 auto;
             text-align: center;
-            position: relative; /* ¡CLAVE para posicionar la onda! */
+            position: relative; 
             overflow: hidden; 
+        }
+        
+        /* SECCIÓN: Separador exclusivo para la onda (80px) */
+        .wave-only-separator {
+            height: var(--wave-height); 
+            scroll-snap-align: none; 
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
         }
 
         /* AJUSTE PARA EL HEADER */
@@ -69,8 +78,7 @@
             background: var(--color-base); 
             color: white; 
             padding-top: 40px; 
-            /* Deja 40px de padding estándar + 80px de la onda */
-            padding-bottom: calc(var(--wave-height) + 40px); 
+            padding-bottom: 80px; 
         }
 
         /* Contenedor interno para limitar el ancho del contenido */
@@ -100,8 +108,13 @@
             text-align: center; 
             justify-content: flex-start; 
             padding-top: 20vh; 
-            padding-bottom: 20vh;
         }
+
+        /* FONDOS DE LOS SEPARADORES: DEBE SER EL COLOR DE LA SECCIÓN SIGUIENTE */
+        .sep-header-to-optimizado { background: #f9fafb; }
+        .sep-optimizado-to-cursos { background: #f0f4f8; }
+        .sep-cursos-to-beneficios { background: #f9fafb; }
+        .sep-beneficios-to-final { background: var(--color-acento-primary); }
 
         /* ... [Navegación y Responsividad: SIN CAMBIOS] ... */
         .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
@@ -113,36 +126,42 @@
         @media (max-width: 600px) {
             .scroll-container { scroll-snap-type: none; height: auto; overflow-y: auto; }
             .snap-section { height: auto; min-height: 80vh; scroll-snap-align: none; padding-top: 10vh; padding-bottom: 10vh; }
+            .wave-only-separator { height: var(--wave-height); scroll-snap-align: none; }
             .dot-navigation { display: none !important; }
         }
 
         /* ========================================================== */
-        /* 5. ONDAS SVG ANCLADAS AL FONDO DE LA SECCIÓN (Definitivo) */
+        /* 5. ONDAS SVG DENTRO DEL SEPARADOR (Rotación Final) */
         /* ========================================================== */
         .wave-separator {
             position: absolute;
-            /* CAMBIO CLAVE: La onda va al fondo de la sección principal */
-            bottom: 0; 
+            top: 0; 
             left: 0;
             width: 100%;
             height: var(--wave-height); 
             overflow: hidden; 
             line-height: 0; 
             z-index: 10; 
-            
-            /* ELIMINAMOS TODAS LAS ROTACIONES */
+            /* Se asegura que el contenedor no tenga rotación */
             transform: none; 
         }
+        
+        /* APLICAMOS LA ROTACIÓN Y POSICIONAMIENTO DIRECTAMENTE AL SVG */
         .wave-separator svg {
             position: relative;
             display: block;
             width: calc(100% + 1.3px); 
             height: var(--wave-height); 
-            /* Aseguramos que no haya rotación ni desplazamiento */
-            transform: none;
+            
+            /* Gira el elemento 180 grados */
+            transform: rotate(180deg); 
+            /* Esto empuja el SVG rotado hacia abajo para que el borde plano quede en el top del separador */
+            margin-top: 0; 
+            /* Un pequeño ajuste para evitar el hueco blanco al rotar */
+            margin-bottom: -1px;
         }
 
-        /* Colores de las ondas: EL COLOR DEBE COINCIDIR CON LA SECCIÓN DE ARRIBA (donde está anclada) */
+        /* Colores de las ondas: DEBE COINCIDIR CON EL COLOR DEL FONDO DE LA SECCIÓN PREVIA */
         .wave-from-header .shape-fill { fill: var(--color-base); }           
         .wave-from-optimizado .shape-fill { fill: #f9fafb; }           
         .wave-from-cursos .shape-fill { fill: #f0f4f8; }              
@@ -187,13 +206,15 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn secondary reveal">📚 APRENDER LINUX Y OFIMÁTICA FÁCIL</a>
                 </div>
             </div>
+        </header>
+
+        <div class="wave-only-separator sep-header-to-optimizado">
             <div class="wave-separator wave-from-header"> 
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-        </header>
-
+        </div>
 
         <section id="servicio" class="snap-section section-optimizado">
             <div class="content-wrapper">
@@ -215,13 +236,15 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn reveal">🚨 ¡MI PC MERECE UNA SEGUNDA OPORTUNIDAD! Clic Aquí.</a>
                 </div>
             </div>
+        </section>
+
+        <div class="wave-only-separator sep-optimizado-to-cursos">
             <div class="wave-separator wave-from-optimizado">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-        </section>
-
+        </div>
 
         <section id="cursos" class="snap-section section-cursos">
             <div class="content-wrapper">
@@ -243,13 +266,15 @@
                     <a href="https://wa.me/51961468282?text=Hola%2C%20me%20interesan%20los%20cursos%20virtuales%20de%20Linux%20y%20ofimática%2E%20Quiero%20saber%20m%C3%A1s%2E" class="cta-btn reveal">📚 SOLICITAR PROGRAMA DE CURSOS Y FECHAS</a>
                 </div>
             </div>
+        </section>
+        
+        <div class="wave-only-separator sep-cursos-to-beneficios">
             <div class="wave-separator wave-from-cursos">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-        </section>
-
+        </div>
 
         <section id="preguntas" class="snap-section section-beneficios">
             <div class="content-wrapper">
@@ -265,13 +290,15 @@
                     <p class="reveal">**No, si tienes a KHIPU 88.** La interfaz moderna es muy intuitiva. Además, con nuestros cursos, te acompañamos paso a paso hasta que domines las herramientas que necesitas.</p>
                 </div>
             </div>
+        </section>
+        
+        <div class="wave-only-separator sep-beneficios-to-final">
             <div class="wave-separator wave-from-beneficios">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-        </section>
-        
+        </div>
         
         <section id="contacto" class="snap-section section-final-cta">
             <div class="content-wrapper">
