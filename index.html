@@ -150,10 +150,9 @@
             background-blend-mode: overlay;
         } 
         
-        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - ¡CORRECCIÓN CLAVE! */
+        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) - ¡NUEVA CORRECCIÓN Y EFECTOS! */
         .section-beneficios { 
             background-color: #f9fafb; 
-            /* Trama de rejilla y ajustes de posición base */
             background-image: 
                 linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
                 linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
@@ -163,11 +162,11 @@
             background-position: 0 0, 0 0, 0 0;
             background-repeat: repeat;
             background-blend-mode: overlay;
-            position: relative; /* Contenedor para el pseudo-elemento */
+            position: relative; 
             overflow: hidden; 
         }
 
-        /* Pseudo-elemento que lleva la imagen de Tux con opacidad, sin afectar al contenido */
+        /* Pseudo-elemento para mostrar solo la imagen de Tux con opacidad, COLOR y efecto parallax */
         .section-beneficios::before {
             content: '';
             position: absolute;
@@ -175,29 +174,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Detrás del contenido */
+            z-index: 1; 
             
-            /* Estilos de la imagen de Tux */
             background-image: url('tux-bg.webp');
-            background-size: 800px;
-            background-position: right center;
+            background-size: 1100px; /* Tux más grande */
+            background-position: right 50%; /* A la derecha, centrado verticalmente */
             background-repeat: no-repeat;
             
-            /* Opacidad SOLO para la imagen de Tux */
-            opacity: 0.35; 
-            /* Efecto blanco y negro */
-            filter: grayscale(100%); 
-            background-blend-mode: luminosity; 
+            opacity: 0.35; /* Opacidad de Tux */
+            /* filter: grayscale(100%); <-- ELIMINADO para ver el color */
+            background-blend-mode: normal; /* Para ver colores y permitir que la trama se superponga */
+            
+            background-attachment: fixed; /* Efecto Parallax */
         }
-        
-        /* El contenido tiene un z-index más alto (2) por el content-wrapper */
         
         /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) */
         .section-final-cta { 
             background-color: var(--color-acento-primary); 
             color: var(--color-base); 
             padding: 80px 20px; 
-            /* Trama blanca con opacidad del 5% */
             background-image: 
                 linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
                 linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
@@ -570,4 +565,3 @@
 
 </body>
 </html>
-
