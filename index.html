@@ -50,7 +50,7 @@
         .snap-section {
             height: 100vh; 
             scroll-snap-align: start; 
-            padding: 80px 20px; 
+            padding: 40px 20px; /* Reducimos el padding para dar más espacio al contenido */
             display: flex; 
             flex-direction: column;
             justify-content: center;
@@ -58,23 +58,28 @@
             margin: 0 auto;
             text-align: center;
             position: relative; 
-            overflow: hidden; 
-            /* AGREGADO: Sombra en la parte inferior de cada sección */
+            overflow: hidden; /* Oculta cualquier desbordamiento accidental de la SECCIÓN, no del contenido interno */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         
+        /* Contenedor interno para manejar el desplazamiento del contenido */
+        .scrollable-content {
+            width: 100%;
+            height: 100%; /* Toma la altura disponible del .snap-section */
+            max-width: 800px; /* Limita el ancho del contenido */
+            overflow-y: auto; /* ¡CLAVE! Permite el desplazamiento interno si el contenido es grande */
+            padding-top: 40px; /* Separación del top de la sección */
+            padding-bottom: 40px; /* Separación del bottom de la sección */
+            display: flex; /* Mantiene la alineación centrada del contenido interno si cabe */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         /* Ajuste para el Header */
         header { 
             background: var(--color-base); 
             color: white; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra para el header también */
-        }
-
-        /* Contenedor interno para limitar el ancho del contenido */
-        .content-wrapper {
-            max-width: 800px;
-            width: 100%;
-            margin: auto;
         }
 
         /* ... [Estilos de Header, H2, H3: SIN CAMBIOS] ... */
@@ -96,9 +101,9 @@
             color: var(--color-base); 
             text-align: center; 
             justify-content: flex-start; 
-            padding-top: 20vh; 
-            padding-bottom: 20vh;
-            box-shadow: none; /* La última sección no necesita sombra en la parte inferior */
+            /* Quitamos el padding top/bottom de .snap-section para definirlo en .scrollable-content */
+            padding: 0 20px; 
+            box-shadow: none; 
         }
 
         /* ... [Navegación y Responsividad: SIN CAMBIOS] ... */
@@ -110,7 +115,9 @@
         
         @media (max-width: 600px) {
             .scroll-container { scroll-snap-type: none; height: auto; overflow-y: auto; }
-            .snap-section { height: auto; min-height: 80vh; scroll-snap-align: none; padding-top: 10vh; padding-bottom: 10vh; }
+            .snap-section { height: auto; min-height: 80vh; scroll-snap-align: none; padding: 0 20px; box-shadow: none; }
+            /* Aseguramos que el contenido sea desplazable en móvil si es necesario */
+            .scrollable-content { overflow-y: visible; height: auto; padding: 10vh 0; }
             .dot-navigation { display: none !important; }
         }
 
@@ -141,7 +148,7 @@
     <div class="scroll-container">
 
         <header id="inicio" class="snap-section section-header-bg">
-            <div class="content-wrapper">
+            <div class="scrollable-content">
                 <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
                 
                 <h1 class="reveal">Recupera la velocidad. Di adiós a la PC lenta.</h1>
@@ -155,7 +162,7 @@
         </header>
 
         <section id="servicio" class="snap-section section-optimizado">
-            <div class="content-wrapper">
+            <div class="scrollable-content">
                 <h2 class="reveal">⚡️ Nuestro Servicio: PC Rápida, Sin Salir de Casa (Trujillo)</h2>
                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Tu equipo solo necesita el software correcto. Hemos reducido el servicio a **dos promesas irrefutables** para asegurar la visibilidad.</p>
                 
@@ -177,7 +184,7 @@
         </section>
 
         <section id="cursos" class="snap-section section-cursos">
-            <div class="content-wrapper">
+            <div class="scrollable-content">
                 <h2 class="reveal">🎓 Cursos Prácticos de Linux: Domina el Software Libre</h2>
                 <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;" class="reveal">Te enseñamos a usar Linux y el software de ofimática libre (documentos, hojas de cálculo) de forma sencilla, desde cero, ahorrándote costos de licencias.</p>
                 
@@ -199,7 +206,7 @@
         </section>
         
         <section id="preguntas" class="snap-section section-beneficios">
-            <div class="content-wrapper">
+            <div class="scrollable-content">
                 <h2 class="reveal">🔥 Preguntas Clave: ¿Por qué es el momento de Linux?</h2>
                 <div class="benefits-qna">
                     <h3 class="reveal">1. ¿La PC antigua no está "demasiado vieja"?</h3>
@@ -215,7 +222,7 @@
         </section>
         
         <section id="contacto" class="snap-section section-final-cta">
-            <div class="content-wrapper">
+            <div class="scrollable-content">
                 <h2 style="color: var(--color-base); margin-bottom: 25px;" class="reveal">¡Listo para el salto a la tecnología libre y rápida!</h2>
                 <div class="cta-header">
                     <a href="https://wa.me/51961468282?text=Hola%2C%20quiero%20cotizar%20la%20optimización%20a%20domicilio%20en%20Trujillo%2E" class="cta-btn primary reveal">🔧 HABLAR CON UN TÉCNICO EN TRUJILLO</a>
