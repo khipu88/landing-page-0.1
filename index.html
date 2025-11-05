@@ -56,7 +56,7 @@
             overflow: hidden; 
             /* Estilos base para las tramas de fondo */
             background-repeat: repeat;
-            background-blend-mode: multiply; /* Para que la trama se combine sutilmente */
+            background-blend-mode: multiply; 
         }
         
         .content-wrapper { max-width: 1000px; width: 100%; margin: auto; position: relative; z-index: 2; }
@@ -76,9 +76,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--color-base); /* Color base oscuro */
-            opacity: 0.75; /* AJUSTA ESTA OPACIDAD (0.7 a 0.85 recomendado) */
-            z-index: 1; /* Se pone entre el video y el contenido */
+            background-color: var(--color-base); 
+            opacity: 0.75; 
+            z-index: 1; 
         }
 
         /* Estilos para el video de fondo */
@@ -103,30 +103,30 @@
 
         
         /* ========================================================== */
-        /* FONDOS DE SECCIÓN CON TRAMAS QUIPU (CORREGIDO) */
+        /* FONDOS DE SECCIÓN CON TRAMAS QUIPU (OPACIDAD AUMENTADA Y FINAL) */
         /* ========================================================== */
         
-        .section-header-bg { /* Selector vacío, el header se maneja arriba */ } 
+        .section-header-bg { /* Selector vacío */ } 
         
         .section-servicio { 
             background-color: #f9fafb; /* Color de fondo base */
             background-image: repeating-linear-gradient(
                                 to right,
-                                rgba(0, 0, 0, 0.08) 0px,  /* Hilo sutil (8% opacidad) */
-                                rgba(0, 0, 0, 0.08) 1px,
+                                rgba(0, 0, 0, 0.2) 0px,  /* Hilo visible (20% opacidad) */
+                                rgba(0, 0, 0, 0.2) 1px,
                                 transparent 1px,
                                 transparent 20px 
                             );
-            background-size: 20px 100%; /* Tamaño de la trama */
-            background-blend-mode: overlay; /* Mezcla sutil con el fondo */
+            background-size: 20px 100%; 
+            background-blend-mode: overlay; 
         } 
         
         .section-talleres { 
             background-color: #eef2f7; /* Color de fondo base */
             background-image: repeating-linear-gradient(
                                 to right,
-                                rgba(0, 0, 0, 0.08) 0px,  /* Hilo sutil (8% opacidad) */
-                                rgba(0, 0, 0, 0.08) 1px,
+                                rgba(0, 0, 0, 0.2) 0px,  /* Hilo visible (20% opacidad) */
+                                rgba(0, 0, 0, 0.2) 1px,
                                 transparent 1px,
                                 transparent 20px 
                             );
@@ -138,8 +138,8 @@
             background-color: #f9fafb; /* Color de fondo base */
             background-image: repeating-linear-gradient(
                                 to right,
-                                rgba(0, 0, 0, 0.08) 0px,  /* Hilo sutil (8% opacidad) */
-                                rgba(0, 0, 0, 0.08) 1px,
+                                rgba(0, 0, 0, 0.2) 0px,  /* Hilo visible (20% opacidad) */
+                                rgba(0, 0, 0, 0.2) 1px,
                                 transparent 1px,
                                 transparent 20px 
                             );
@@ -151,11 +151,11 @@
             background-color: var(--color-acento-primary); /* Color base */
             color: var(--color-base); 
             padding: 80px 20px; 
-            /* Trama 4: Quipu Sutil sobre color de acento */
+            /* Trama 4: Hilos más oscuros */
             background-image: repeating-linear-gradient(
                                 to right,
-                                rgba(0, 11, 54, 0.1) 0px, /* Hilos oscuros (10% opacidad) */
-                                rgba(0, 11, 54, 0.1) 1px,
+                                rgba(0, 11, 54, 0.25) 0px, /* Hilos oscuros (25% opacidad) */
+                                rgba(0, 11, 54, 0.25) 1px,
                                 transparent 1px,
                                 transparent 20px 
                             );
@@ -289,9 +289,9 @@
 
         <header id="inicio" class="snap-section section-header-bg">
             
-            <video class="video-background" autoplay muted loop playsinline poster="img/khipu-poster.jpg">
-                <source src="video/khipu-fondo.mp4" type="video/mp4">
-                <source src="video/khipu-fondo.webm" type="video/webm">
+            <video class="video-background" autoplay muted loop playsinline poster="poster.png">
+                <source src="videofondo.mp4" type="video/mp4">
+                <source src="videofondo.webm" type="video/webm">
                 Tu navegador no soporta videos HTML5.
             </video>
             <div class="content-wrapper">
