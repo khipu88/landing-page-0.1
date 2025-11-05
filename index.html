@@ -115,7 +115,7 @@
         
         .section-header-bg { /* Selector vacío */ } 
         
-        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) - Opacidad 50% */
+        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) - Opacidad 50% (MANTENIDA) */
         .section-servicio { 
             background-color: #f9fafb; 
             background-image: 
@@ -128,21 +128,21 @@
             background-blend-mode: overlay;
         } 
         
-        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) - Opacidad 30% */
+        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) - Opacidad 15% (SUTIL) */
         .section-talleres { 
             background-color: #eef2ff; 
             background-image: 
                 repeating-linear-gradient(
                     -45deg, 
-                    rgba(0, 0, 0, 0.3) 0, /* Opacidad Reducida */
-                    rgba(0, 0, 0, 0.3) 2px,
+                    rgba(0, 0, 0, 0.15) 0, /* Opacidad Muy Reducida */
+                    rgba(0, 0, 0, 0.15) 2px,
                     transparent 2px,
                     transparent 40px
                 ),
                 repeating-linear-gradient(
                     45deg,
-                    rgba(0, 0, 0, 0.3) 0, /* Opacidad Reducida */
-                    rgba(0, 0, 0, 0.3) 2px,
+                    rgba(0, 0, 0, 0.15) 0, /* Opacidad Muy Reducida */
+                    rgba(0, 0, 0, 0.15) 2px,
                     transparent 2px,
                     transparent 40px
                 );
@@ -150,7 +150,7 @@
             background-blend-mode: overlay;
         }  
         
-        /* TRAMA 3: IGUAL A SECCIÓN 2 (REJILLA ISOMÉTRICA) */
+        /* TRAMA 3: IGUAL A SECCIÓN 2 (REJILLA ISOMÉTRICA) - Opacidad 50% (MANTENIDA) */
         .section-beneficios { 
             background-color: #f9fafb; 
             background-image: 
@@ -162,20 +162,19 @@
             background-blend-mode: overlay;
         }  
         
-        /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) - Opacidad 40% */
+        /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) - Opacidad 10% (REDUCIDA) */
         .section-final-cta { 
             background-color: var(--color-acento-primary); 
             color: var(--color-base); 
             padding: 80px 20px; 
-            /* Se utiliza el color base (oscuro) con opacidad para el fondo cian */
             background-image: 
-                linear-gradient(45deg, rgba(0, 11, 54, 0.4) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(0, 11, 54, 0.4) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(0, 11, 54, 0.4) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(0, 11, 54, 0.4) 75%);
+                linear-gradient(45deg, rgba(0, 11, 54, 0.1) 25%, transparent 25%), /* Opacidad 10% */
+                linear-gradient(-45deg, rgba(0, 11, 54, 0.1) 25%, transparent 25%), /* Opacidad 10% */
+                linear-gradient(45deg, transparent 75%, rgba(0, 11, 54, 0.1) 75%), /* Opacidad 10% */
+                linear-gradient(-45deg, transparent 75%, rgba(0, 11, 54, 0.1) 75%); /* Opacidad 10% */
             
             background-size: 30px 30px; 
-            background-position: 0 0, 0 15px, 15px -15px, -15px 0px; /* Posicionamiento para crear cubos 3D */
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px; 
             background-blend-mode: overlay;
         }
 
