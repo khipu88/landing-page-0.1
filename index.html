@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,335 +20,315 @@
 
     <meta property="og:title" content="Khipu88 Linux Lab: Revive tu compu con Linux" />
     <meta property="og:description" content="Extiende la vida útil de tu compu antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
-    <meta property="og:image" content="logoweb.webp" /> 
+    <meta property="og:image" content="logoweb.webp" />
 
     <style>
         /* ========================================================== */
         /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
         /* ========================================================== */
         :root {
-            --color-base: #000B36;           
-            --color-acento-primary: #00E1D5;  
+            --color-base: #000B36;
+            --color-acento-primary: #00E1D5;
             --color-acento-secondary: #08D3FF;
-            --font-serif: 'DM Serif Text', serif; 
-            --font-sans: 'Quicksand', sans-serif; 
+            --font-serif: 'DM Serif Text', serif;
+            --font-sans: 'Quicksand', sans-serif;
         }
 
         /* RESET Y ESTILOS BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            line-height: 1.6; 
+        html { scroll-behavior: smooth; }
+        body {
+            line-height: 1.6;
             font-family: var(--font-sans);
             background-color: #f9fafb;
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            color: #333;
         }
 
         /* ========================================================== */
-        /* 2. ESTRUCTURA Y TIPOGRAFÍA */
+        /* 2. NAVEGACIÓN (Sticky Glass Header) */
         /* ========================================================== */
-        .scroll-container { 
-            height: auto; 
-            overflow-y: visible;
-            scroll-snap-type: y mandatory; 
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 11, 54, 0.90);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
+
+        .nav-logo {
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+        }
+        .nav-logo img { height: 35px; width: auto; }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--color-acento-primary); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .navbar { justify-content: center; }
+        }
+
+        /* ========================================================== */
+        /* 3. ESTRUCTURA Y SECCIONES */
+        /* ========================================================== */
+        .scroll-container { height: auto; overflow-y: visible; }
 
         .snap-section {
-            min-height: 100vh; 
-            height: auto; 
-            padding: 80px 20px; 
-            display: flex; 
+            min-height: 100vh;
+            height: auto;
+            padding: 100px 20px 80px;
+            display: flex;
             flex-direction: column;
-            justify-content: center; 
+            justify-content: center;
             align-items: center;
             margin: 0 auto;
             text-align: center;
-            position: relative; 
-            overflow: hidden; 
+            position: relative;
+            overflow: hidden;
             background-repeat: repeat;
-            background-blend-mode: overlay; 
-            scroll-snap-align: start; 
         }
 
-        /* Aseguramos que el contenido esté por encima de cualquier pseudo-elemento */
         .content-wrapper { max-width: 1000px; width: 100%; margin: auto; position: relative; z-index: 2; }
 
-        /* Estilos de Tipografía */
-        header { 
-            color: white; 
-            position: relative; 
-            overflow: hidden; 
-        }
+        header { color: white; position: relative; }
 
-        /* Superposición oscura para legibilidad del texto sobre el video */
         header::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--color-base); 
-            opacity: 0.75; 
-            z-index: 1; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--color-base);
+            opacity: 0.75;
+            z-index: 1;
         }
 
-        /* Estilos para el video de fondo */
         .video-background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
+            position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+            object-fit: cover;
             transform: translate(-50%, -50%);
-            z-index: 0; 
+            z-index: 0;
         }
 
-        /* Estilos de Header Centrado */
-        header img { width: 30vw; max-width: 60px; height: auto; margin: 0 auto 35px auto; display: block; }
-        header h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 15px; font-family: var(--font-serif); line-height: 1.1; } 
-        header p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #d1d5db; max-width: 750px; margin: 0 auto 30px; }
-        
+        header img { width: 30vw; max-width: 80px; height: auto; margin: 0 auto 25px auto; display: block; }
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 15px;
+            font-family: var(--font-serif);
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        header p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #e5e7eb; max-width: 750px; margin: 0 auto 30px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+
         h2 { color: var(--color-base); margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-family: var(--font-serif); line-height: 1.2; }
         h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
 
-        /* Estilo: Subtítulos de Secciones 2, 3 y 4 */
         .subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #4b5563; 
-            max-width: 750px; 
-            margin: 0 auto 40px; 
-        }
-        
-        /* ========================================================== */
-        /* FONDOS DE SECCIÓN CON TRAMAS GEOMÉTRICAS */
-        /* ========================================================== */
-        
-        .section-header-bg { /* Selector vacío */ } 
-        
-        /* TRAMA 1: REJILLA ISOMÉTRICA (Sección Servicios) */
-        .section-servicio { 
-            background-color: #f9fafb; 
-            background-image: 
-                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
-            background-size: 30px 52px; 
-            background-blend-mode: overlay;
-        } 
-        
-        /* TRAMA 2: LÍNEAS DE CIRCUITO/PLACA BASE (Sección Talleres) */
-        .section-talleres { 
-            background-color: #eef2ff; 
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg, 
-                    rgba(0, 0, 0, 0.15) 0, 
-                    rgba(0, 0, 0, 0.15) 2px,
-                    transparent 2px,
-                    transparent 40px
-                ),
-                repeating-linear-gradient(
-                    45deg,
-                    rgba(0, 0, 0, 0.15) 0, 
-                    rgba(0, 0, 0, 0.15) 2px,
-                    transparent 2px,
-                    transparent 40px
-                );
-            background-size: 40px 40px; 
-            background-blend-mode: overlay;
-        } 
-        
-        /* TRAMA 3: IMAGEN DE TUX (Sección ¿Por Qué?) */
-        .section-beneficios { 
-            background-color: #f9fafb; 
-            background-image: 
-                linear-gradient(120deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px);
-            background-size: 30px 52px; 
-            background-position: 0 0, 0 0, 0 0;
-            background-repeat: repeat;
-            background-blend-mode: overlay;
-            position: relative; 
-            overflow: hidden; 
+            color: #4b5563;
+            max-width: 750px;
+            margin: 0 auto 40px;
         }
 
-        /* Pseudo-elemento para mostrar solo la imagen de Tux con opacidad y efecto parallax */
+        /* FONDOS */
+        .section-servicio {
+            background-color: #f9fafb;
+            background-image:
+                linear-gradient(120deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(60deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 30px 52px;
+        }
+
+        .section-talleres {
+            background-color: #eef2ff;
+            background-image:
+                repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 40px),
+                repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 40px);
+            background-size: 40px 40px;
+        }
+
+        .section-beneficios {
+            background-color: #f9fafb;
+            position: relative;
+            overflow: hidden;
+        }
         .section-beneficios::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
             background-image: url('tux-bg.webp');
-            background-size: 1100px; 
-            background-position: right 50%; 
+            background-size: 1100px;
+            background-position: right 50%;
             background-repeat: no-repeat;
-            opacity: 0.35; 
-            background-blend-mode: normal; 
-            background-attachment: fixed; 
-        }
-        
-        /* TRAMA 4: CUBOS ENTRELAZADOS ISOMÉTRICOS (Sección CTA Final) */
-        .section-final-cta { 
-            background-color: var(--color-acento-primary); 
-            color: var(--color-base); 
-            padding: 80px 20px; 
-            background-image: 
-                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
-                linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%), 
-                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%); 
-            background-size: 50px 50px; 
-            background-position: 0 0, 0 25px, 25px -25px, -25px 0px; 
-            background-blend-mode: overlay;
+            opacity: 0.15;
+            background-attachment: fixed;
         }
 
-        /* ========================================================== */
-        /* 3. BOTONES Y TARJETAS */
-        /* ========================================================== */
-        
-        /* CTA BOTÓN ÚNICO */
-        .cta-btn { 
-            display: inline-block; background: var(--color-acento-primary); 
-            color: var(--color-base); padding: 18px 40px; 
-            border-radius: 50px; text-decoration: none; 
-            font-weight: bold; font-size: 1.15rem; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 6px 15px rgba(0, 225, 213, 0.4); 
-            margin-top: 30px; 
-        }
-        
-        .cta-btn:hover { 
-            background: var(--color-acento-secondary); 
-            transform: scale(1.05); 
-            color: white; 
-            box-shadow: 0 8px 20px rgba(8, 211, 255, 0.6);
+        .section-final-cta {
+            background-color: var(--color-acento-primary);
+            color: var(--color-base);
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
+            background-size: 50px 50px;
         }
 
-        /* Estilo para los 3 Beneficios */
-        .grid-3-cards { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
+        /* TARJETAS */
+        .grid-3-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
-        .card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            text-align: left; 
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 6px 15px rgba(0,0,0,0.05); 
-            border: 1px solid #e5e7eb;
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 32px 0 rgba(0, 11, 54, 0.05);
         }
         .card:hover {
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.95);
             border-color: var(--color-acento-primary);
+            box-shadow: 0 20px 40px rgba(0, 225, 213, 0.15);
         }
-        
-        /* Iconos de las Cards */
+
         .card-icon {
             font-size: 2.2rem;
             color: var(--color-acento-primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
-        .card h3 { 
-            margin-top: 0;
-            margin-bottom: 10px; 
-            font-size: 1.3rem; 
-            color: var(--color-base);
-        }
+        .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.3rem; color: var(--color-base); }
         .card p { font-size: 1rem; color: #4b5563; }
 
-        /* Estilos específicos para el CTA Final */
+        /* TABLA COMPARATIVA */
+        .comparison-box {
+            margin: 50px auto 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 800px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+        .comp-row { display: flex; border-bottom: 1px solid #e5e7eb; padding: 15px 20px; align-items: center; }
+        .comp-row:last-child { border-bottom: none; }
+        .comp-label { flex: 2; font-weight: bold; color: var(--color-base); text-align: left; font-size: 0.95rem; }
+        .comp-val { flex: 1; text-align: center; font-size: 0.9rem; }
+        .win { color: #059669; font-weight: 800; }
+        .lose { color: #dc2626; text-decoration: line-through; opacity: 0.6; }
+
+        /* BOTONES */
+        .cta-btn {
+            display: inline-block; background: var(--color-acento-primary);
+            color: var(--color-base); padding: 18px 40px;
+            border-radius: 50px; text-decoration: none;
+            font-weight: bold; font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 225, 213, 0.4);
+            margin-top: 30px;
+            border: 2px solid transparent;
+        }
+        .cta-btn:hover {
+            background: var(--color-acento-secondary);
+            transform: scale(1.05);
+            color: white;
+            box-shadow: 0 8px 25px rgba(8, 211, 255, 0.5);
+        }
+
         .section-final-cta h2 { color: var(--color-base); line-height: 1.2; }
-        .section-final-cta p { font-size: 1.3rem; margin-top: -15px; color: #1f2937; }
-        .section-final-cta .cta-btn { 
-            background: var(--color-base); 
-            color: var(--color-acento-primary); 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            margin-bottom: 40px; 
+        .section-final-cta p { font-size: 1.3rem; margin-top: -15px; color: var(--color-base); opacity: 0.9; }
+        .section-final-cta .cta-btn {
+            background: var(--color-base);
+            color: var(--color-acento-primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
         }
-        .section-final-cta .cta-btn:hover { 
-            background: #111827; 
-            color: var(--color-acento-secondary); 
-            transform: scale(1.05); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
+        .section-final-cta .cta-btn:hover {
+            background: #111827;
+            color: var(--color-acento-secondary);
+            transform: scale(1.05);
         }
 
-        /* ========================================================== */
-        /* 4. RESPONSIVIDAD Y NAVEGACIÓN Y FOOTER */
-        /* ========================================================== */
-        footer { position: relative; background: var(--color-base); color: #9ca3af; text-align: center; padding: 15px 20px; font-size: 0.9rem; position: absolute; bottom: 0; left: 0; width: 100%; }
-        
-        /* Íconos sociales en la sección final */
-        .social-icons { 
-            margin-top: 0; 
-            margin-bottom: 20px; 
-            display: flex; 
-            gap: 30px; 
-            justify-content: center; 
+        /* FOOTER */
+        footer {
+            background: var(--color-base);
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            width: 100%;
+            position: absolute; bottom: 0; left: 0;
         }
-        .social-icons a { 
-            color: var(--color-base); 
-            font-size: 2.5rem; 
-            transition: color 0.3s ease, transform 0.3s ease; 
+
+        .social-icons {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
         }
-        .social-icons a:hover { 
-            color: #1f2937; 
-            transform: scale(1.15); 
+        .social-icons a {
+            color: var(--color-base);
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
         }
-        
-        /* Navegación por Puntos */
-        .dot-navigation { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 1000; }
-        .dot-navigation a { display: block; width: 12px; height: 12px; margin: 15px 0; background: rgba(255, 255, 255, 0.5); border-radius: 50%; transition: all 0.3s ease; text-indent: -9999px; border: 2px solid rgba(0, 0, 0, 0.2); }
-        .dot-navigation a.active { background: var(--color-acento-primary); border: 2px solid var(--color-base); transform: scale(1.2); }
-        /* Ajuste para que los puntos se vean sobre el video (fondo oscuro) */
-        header + .dot-navigation a { 
-            background: rgba(255, 255, 255, 0.7); 
-            border: 2px solid var(--color-acento-primary); 
+        .social-icons a:hover {
+            color: white;
+            transform: scale(1.2);
         }
-        header + .dot-navigation a.active { 
-            background: var(--color-acento-primary); 
-            border: 2px solid white; 
-        }
-        
-        /* CORRECCIÓN DE FONDOS EN MÓVILES (Parallax) */
-        @media screen and (max-width: 768px) {
+
+        @media (max-width: 768px) {
             .section-beneficios::before {
-                /* Desactiva el parallax (fixed) para evitar el error de renderizado en móviles */
-                background-attachment: scroll !important; 
-                /* Ajusta el tamaño de la imagen de Tux para móviles */
-                background-size: 500px; 
-                background-position: center bottom; 
+                background-attachment: scroll !important;
+                background-size: 500px;
+                background-position: center bottom;
             }
-        }
-
-        /* Media Queries para responsividad existentes (600px) */
-        @media (max-width: 600px) {
-            .snap-section { min-height: 80vh; padding: 50px 20px; }
-            .dot-navigation { display: none !important; }
+            .snap-section { min-height: auto; padding: 120px 20px 60px; }
+            .grid-3-cards { gap: 20px; }
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="dot-navigation">
-        <a href="#inicio" data-section="inicio" class="active">Inicio</a>
-        <a href="#servicio" data-section="servicio">Servicio</a>
-        <a href="#talleres" data-section="talleres">Talleres</a>
-        <a href="#porque" data-section="porque">¿Por qué?</a>
-        <a href="#contacto" data-section="contacto">Contacto</a>
+    <nav class="navbar">
+        <a href="#inicio" class="nav-logo">
+            <img src="ico.png" alt="Logo"> KHIPU 88
+        </a>
+        <div class="nav-links">
+            <a href="#servicio">Servicios</a> <a href="#talleres">Cursos</a>
+            <a href="#porque">Ventajas</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </nav>
-    
+
     <div class="scroll-container">
 
         <header id="inicio" class="snap-section section-header-bg">
@@ -358,225 +338,168 @@
                 Tu navegador no soporta videos HTML5.
             </video>
             <div class="content-wrapper">
-                <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal"> 
+                <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal">
                 <h1 class="reveal">¡No botes tu compu lenta! <br> ¡Dale una nueva vida!</h1>
-                <p class="reveal">Optimizamos tu compu con Linux, más rápida y segura que nunca. Además, aprende a sacarle el máximo provecho con nuestros talleres.</p>
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%20Linux%20Lab%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20tus%20servicios." class="cta-btn primary reveal"><i class="fas fa-mobile-alt"></i> Quiero más información</a>
+                <p class="reveal">Optimizamos tu compu con Linux, más rápida y segura que nunca. Servicio a domicilio en Trujillo.</p>
+
+                <a href="#servicio" class="cta-btn primary reveal"><i class="fas fa-arrow-down"></i> Ver cómo funciona</a>
             </div>
         </header>
 
         <section id="servicio" class="snap-section section-servicio">
             <div class="content-wrapper">
                 <h2 class="reveal">¡Optimizamos tu compu!</h2>
-                <p class="subtitle reveal">Hacemos que tu equipo siga siendo útil.</p>
-                
+                <p class="subtitle reveal">Hacemos que tu equipo antiguo vuele de nuevo.</p>
+
                 <div class="grid-3-cards">
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-rocket"></i>
-                        <h3>Velocidad extrema sin costo alto</h3>
-                        <p>Linux es ligero y utiliza menos recursos. Al combinarlo con un <strong>SSD o RAM</strong> recomendado, tu PC volará sin gastar en una nueva.</p>
+                        <h3>Velocidad extrema</h3>
+                        <p>Linux es ligero. Combinado con un <strong>SSD</strong> recomendado, tu PC volará sin gastar en una nueva.</p>
                     </div>
-                    <div class="card reveal-stagger"> 
+                    <div class="card reveal-stagger">
                         <i class="card-icon fas fa-recycle"></i>
-                        <h3>Ahorro genuino y reciclaje inteligente</h3>
-                        <p>Alargas la vida útil de tu hardware por años, contribuyes al planeta y ahorras dinero que puedes invertir en tu familia.</p>
+                        <h3>Ahorro y Reciclaje</h3>
+                        <p>Alargas la vida útil de tu hardware por años. Ahorras dinero y cuidas el planeta evitando basura electrónica.</p>
                     </div>
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-shield-alt"></i>
-                        <h3>Máxima seguridad y privacidad garantizada</h3>
-                        <p>Olvídate de los antivirus caros y las amenazas constantes. Linux es robusto y te da tranquilidad para navegar y trabajar.</p>
+                        <h3>Seguridad Total</h3>
+                        <p>Olvídate de los antivirus caros y las licencias vencidas. Linux es robusto y seguro para navegar.</p>
                     </div>
                 </div>
-                
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%20Linux%20Lab%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20tus%20servicios." class="cta-btn reveal"><i class="fas fa-mobile-alt"></i> Quiero más información</a>
+
+                <div class="reveal" style="width: 100%;">
+                    <div class="comparison-box">
+                        <div class="comp-row" style="background: #f3f4f6; font-weight:bold;">
+                            <div class="comp-label">Comparativa Laptop Antigua (Core i3)</div>
+                            <div class="comp-val">Windows 10</div>
+                            <div class="comp-val" style="color: var(--color-acento-secondary);">Linux</div> </div>
+                        <div class="comp-row">
+                            <div class="comp-label"><i class="fas fa-stopwatch"></i> Tiempo de encendido</div>
+                            <div class="comp-val lose">1m 45s</div>
+                            <div class="comp-val win">35s</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-label"><i class="fas fa-memory"></i> Uso de RAM (Reposo)</div>
+                            <div class="comp-val lose">2.1 GB</div>
+                            <div class="comp-val win">0.6 GB</div>
+                        </div>
+                        <div class="comp-row">
+                            <div class="comp-label"><i class="fas fa-shield-virus"></i> Virus y Malware</div>
+                            <div class="comp-val lose">Vulnerable</div>
+                            <div class="comp-val win">Inmune</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20quisiera%20revivir%20mi%20PC%20a%20domicilio%2C%20por%20favor%20br%C3%ADndame%20m%C3%A1s%20detalles." class="cta-btn reveal"><i class="fas fa-tools"></i> Quiero revivir mi PC a Domicilio</a>
             </div>
         </section>
 
         <section id="talleres" class="snap-section section-talleres">
             <div class="content-wrapper">
-                <h2 class="reveal">Te preparamos con nuestros talleres.</h2>
-                <p class="subtitle reveal">Da el salto a lo digital sin miedo: cursos para todos.</p>
-                
+                <h2 class="reveal">Cursos para todos</h2>
+                <p class="subtitle reveal">Pierde el miedo a la tecnología. Clases pacientes y paso a paso.</p>
+
                 <div class="grid-3-cards">
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-user-graduate"></i>
-                        <h3>Aprende de 0, sin tecnicismos</h3>
-                        <p>Nuestro método está diseñado para personas de todas las edades que nunca han usado Linux (o una PC). Sencillez garantizada.</p>
+                        <h3>Desde Cero (Para Todos)</h3>
+                        <p>Ideal para todo el mundo, desde niños hasta adultos mayores. Método sencillo garantizado, sin palabras complicadas.</p>
                     </div>
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-file-invoice"></i>
-                        <h3>Dominio de ofimática e internet</h3>
-                        <p>Te enseñamos a usar herramientas gratuitas (LibreOffice) y a navegar seguro. Libérate de costosas licencias.</p>
+                        <h3>Ofimática e Internet</h3>
+                        <p>Aprende a redactar documentos, usar hojas de cálculo gratuitas (LibreOffice) y navegar seguro.</p>
                     </div>
-                    
+
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-laptop-house"></i>
-                        <h3>Modalidad virtual o a domicilio</h3>
-                        <p>¡Aprendes desde donde estés! Cursos online flexibles para todo el mundo, o presenciales si estás en Trujillo.</p>
+                        <h3>Virtual o a Domicilio</h3>
+                        <p>Aprende desde casa vía Zoom/Meet o vamos a tu domicilio en Trujillo para enseñanza personalizada.</p>
                     </div>
                 </div>
-                
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%20Linux%20Lab%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20tus%20servicios." class="cta-btn reveal"><i class="fas fa-mobile-alt"></i> Quiero más información</a>
+
+                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20estoy%20interesado%20en%20aprender%20Linux%20y%20computaci%C3%B3n%20desde%20cero." class="cta-btn reveal"><i class="fas fa-graduation-cap"></i> Quiero aprender Linux desde cero</a>
             </div>
         </section>
 
         <section id="porque" class="snap-section section-beneficios">
             <div class="content-wrapper">
-                <h2 class="reveal">¿Por qué elegir linux?</h2>
-                <p class="subtitle reveal">Muchas personas creen que Linux es solo para expertos. ¡Te demostramos lo contrario!</p>
-                
+                <h2 class="reveal">¿Por qué elegir Linux?</h2>
+                <p class="subtitle reveal">Es el sistema que mueve el mundo, ahora fácil para ti.</p>
+
                 <div class="grid-3-cards">
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-hand-holding-usd"></i>
-                        <h3>Cero costo en licencias y software</h3>
-                        <p>Linux es Software Libre. Nunca pagarás por el sistema operativo, ni por la ofimática (como LibreOffice), ni por la mayoría de las herramientas que necesitas. Ahorro 100% garantizado.</p>
+                        <h3>100% Gratuito y Legal</h3>
+                        <p>Linux es Software Libre. Nunca pagarás licencias piratas ni renovaciones anuales. Todo es legal y gratis.</p>
                     </div>
                     <div class="card reveal-stagger">
                         <i class="card-icon fas fa-tachometer-alt"></i>
-                        <h3>El rey de la velocidad en equipos antiguos</h3>
-                        <p>Diseñado para ser ligero y eficiente. Linux no tiene procesos pesados innecesarios, lo que garantiza que tu PC antigua funcione más rápido y de manera más estable que nunca.</p>
+                        <h3>Rendimiento Superior</h3>
+                        <p>Diseñado para ser eficiente. Linux no tiene procesos "basura" en segundo plano que ralentizan tu PC.</p>
                     </div>
                     <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-paw"></i>
-                        <h3>El Guardián: Adiós a los virus y el espionaje</h3>
-                        <p>Gracias a <strong>Tux</strong> y la comunidad de Software Libre, Linux es inherentemente más seguro y te da privacidad total. Las vulnerabilidades se corrigen de inmediato, sin necesidad de antivirus costosos.</p>
+                        <i class="card-icon fas fa-users"></i>
+                        <h3>Comunidad Global</h3>
+                        <p>Gracias a la comunidad mundial de código abierto, el sistema mejora cada día para ti, siendo siempre seguro.</p>
                     </div>
                 </div>
 
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%20Linux%20Lab%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20tus%20servicios." class="cta-btn reveal"><i class="fas fa-mobile-alt"></i> Quiero más información</a>
+                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20tengo%20algunas%20dudas%20sobre%20Linux%2C%20quisiera%20m%C3%A1s%20info." class="cta-btn reveal"><i class="fab fa-whatsapp"></i> Hablar con un experto</a>
             </div>
         </section>
 
         <section id="contacto" class="snap-section section-final-cta">
             <div class="content-wrapper">
-                <h2 class="reveal">🚀 El cambio es fácil cuando tienes el equipo y la formación correcta.</h2>
+                <h2 class="reveal">🚀 El cambio es más fácil de lo que crees.</h2>
                 <p class="reveal">Estamos listos para ayudarte a dar el salto.</p>
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%20Linux%20Lab%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20tus%20servicios." class="cta-btn primary reveal"><i class="fas fa-mobile-alt"></i> Quiero más información</a>
-                
+                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20estoy%20listo%20para%20mejorar%20mi%20equipo.%20Solicito%20informaci%C3%B3n." class="cta-btn primary reveal"><i class="fas fa-mobile-alt"></i> Contáctanos Ahora</a>
+
                 <div class="social-icons reveal">
+                    <a href="https://wa.me/51961468282" target="_blank" aria-label="Escríbenos al WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.facebook.com/khipu88pe" target="_blank" aria-label="Visita nuestro Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/khipu88pe" target="_blank" aria-label="Visita nuestro Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="mailto:khipu88@gmail.com" aria-label="Envíanos un correo electrónico"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
+
             <footer>
-                © 2025 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre para todos. Trujillo, Perú.
+                © 2026 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre. Trujillo, Perú.
             </footer>
         </section>
 
-    </div> 
+    </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <script>
-        // CONFIGURACIÓN BASE DEL REVELADO
         const defaultReveal = {
             delay: 150,
             distance: '40px',
             easing: 'ease-in-out',
-            reset: true, 
-            duration: 500, 
-            viewFactor: 0.5 
+            reset: true,
+            duration: 600,
+            viewFactor: 0.3
         };
 
-        // Aplicar ScrollReveal a diferentes elementos con orígenes variados
-
-        // Sección INICIO (Logo, Título, Párrafo, Botón)
+        ScrollReveal().reveal('.navbar', { delay: 0, distance: '0px', opacity: 0, duration: 800 });
         ScrollReveal().reveal('#inicio .reveal', { ...defaultReveal, origin: 'bottom' });
 
-        // Sección SERVICIO (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#servicio h2, #servicio .subtitle, #servicio .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'right', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#servicio .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        ScrollReveal().reveal('#servicio h2, #servicio .subtitle', { ...defaultReveal, origin: 'right', distance: '50px' });
+        ScrollReveal().reveal('#servicio .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
+        ScrollReveal().reveal('#servicio .comparison-box', { ...defaultReveal, delay: 300, origin: 'bottom', distance: '60px' });
+        ScrollReveal().reveal('#servicio .cta-btn', { ...defaultReveal, delay: 400, origin: 'bottom' });
 
-        // Sección TALLERES (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#talleres h2, #talleres .subtitle, #talleres .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'left', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#talleres .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        ScrollReveal().reveal('#talleres h2, #talleres .subtitle, #talleres .cta-btn', { ...defaultReveal, origin: 'left', distance: '50px' });
+        ScrollReveal().reveal('#talleres .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
 
-        // Sección ¿POR QUÉ? (H2, Subtítulo, Botón)
-        ScrollReveal().reveal('#porque h2, #porque .subtitle, #porque .cta-btn', { 
-            ...defaultReveal, 
-            origin: 'top', 
-            distance: '50px' 
-        });
-        // Las tarjetas aparecen de abajo
-        ScrollReveal().reveal('#porque .reveal-stagger', {
-            ...defaultReveal,
-            delay: 200, 
-            interval: 150,
-            origin: 'bottom'
-        });
+        ScrollReveal().reveal('#porque h2, #porque .subtitle, #porque .cta-btn', { ...defaultReveal, origin: 'top', distance: '50px' });
+        ScrollReveal().reveal('#porque .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
 
-        // Sección CONTACTO (H2, Párrafo, Botón, Íconos Sociales)
-        ScrollReveal().reveal('#contacto .reveal', { 
-            ...defaultReveal, 
-            origin: 'bottom' 
-        });
-
-
-        // Navegación Fija y Detección de Sección Activa
-        const sections = document.querySelectorAll('.snap-section');
-        const navLinks = document.querySelectorAll('.dot-navigation a');
-
-        function updateNav() {
-            let currentSection = '';
-            // Detecta la sección que está cerca del centro de la pantalla
-            const scrollCenter = window.scrollY + (window.innerHeight / 2);
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-
-                if (scrollCenter >= sectionTop && scrollCenter < sectionTop + sectionHeight) {
-                    currentSection = section.id;
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-section') === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateNav);
-        updateNav();
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        ScrollReveal().reveal('#contacto .reveal', { ...defaultReveal, origin: 'bottom' });
     </script>
 
 </body>
