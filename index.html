@@ -3,315 +3,208 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khipu88 Linux Lab | Revive tu compu con Linux: Ahorra y aprende fácil</title>
+    <title>Khipu88 Linux Lab | Tecnología que Revive</title>
 
     <link rel="icon" type="image/png" href="ico.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </noscript>
-
-    <meta property="og:title" content="Khipu88 Linux Lab: Revive tu compu con Linux" />
-    <meta property="og:description" content="Extiende la vida útil de tu compu antigua y ahorra dinero. Soluciones rápidas, seguras y sostenibles." />
-    <meta property="og:image" content="logoweb.webp" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ========================================================== */
-        /* 1. PALETA DE COLORES Y FUENTES DE KHIPU 88 */
-        /* ========================================================== */
+        /* ================= VARIABLES ================= */
         :root {
-            --color-base: #000B36;
-            --color-acento-primary: #00E1D5;
-            --color-acento-secondary: #08D3FF;
-            --font-serif: 'DM Serif Text', serif;
-            --font-sans: 'Quicksand', sans-serif;
+            --hero-bg: #020617;       /* Azul Noche */
+            --body-bg: #ffffff;
+            --section-alt: #f8fafc;   /* Gris Hielo */
+            --primary: #0ea5e9;       /* Azul Cielo */
+            --primary-dark: #0284c7;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        /* RESET Y ESTILOS BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
         body {
-            line-height: 1.6;
-            font-family: var(--font-sans);
-            background-color: #f9fafb;
-            overflow-x: hidden;
-            color: #333;
+            background-color: var(--body-bg); color: var(--text-dark);
+            font-family: var(--font-body); line-height: 1.6;
         }
 
-        /* ========================================================== */
-        /* 2. NAVEGACIÓN (Sticky Glass Header) */
-        /* ========================================================== */
+        /* --- NAVBAR --- */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
-            background: rgba(0, 11, 54, 0.90);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-logo {
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-sans);
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: #fff; font-family: var(--font-head);
+            font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px;
         }
         .nav-logo img { height: 35px; width: auto; }
 
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a {
-            color: #e5e7eb;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s;
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-whatsapp-nav {
+            display: flex; align-items: center; gap: 8px;
+            background: #25D366; color: white !important;
+            padding: 8px 20px; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem;
+            transition: transform 0.2s;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--color-acento-primary); }
+        .btn-whatsapp-nav:hover { transform: scale(1.05); filter: brightness(1.1); }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .navbar { justify-content: center; }
-        }
-
-        /* ========================================================== */
-        /* 3. ESTRUCTURA Y SECCIONES */
-        /* ========================================================== */
-        .scroll-container { height: auto; overflow-y: visible; }
-
-        .snap-section {
-            min-height: 100vh;
-            height: auto;
-            padding: 100px 20px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background-repeat: repeat;
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative; min-height: 95vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 100px 20px 150px;
+            background-color: var(--hero-bg); color: #fff; overflow: hidden;
         }
 
-        .content-wrapper { max-width: 1000px; width: 100%; margin: auto; position: relative; z-index: 2; }
-
-        header { color: white; position: relative; }
-
-        header::before {
-            content: '';
+        .hero-video {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--color-base);
-            opacity: 0.75;
+            object-fit: cover; opacity: 0.6; z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(2,6,23,0.3), var(--hero-bg));
             z-index: 1;
         }
 
-        .video-background {
-            position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: 0;
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+        /* LOGO HERO PEQUEÑO (55px) */
+        .hero-main-logo {
+            width: 55px; height: auto; margin-bottom: 25px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(14,165,233,0.3));
         }
 
-        header img { width: 30vw; max-width: 80px; height: auto; margin: 0 auto 25px auto; display: block; }
-        header h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            font-family: var(--font-serif);
-            line-height: 1.1;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        header p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: #e5e7eb; max-width: 750px; margin: 0 auto 30px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-
-        h2 { color: var(--color-base); margin-bottom: 10px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-family: var(--font-serif); line-height: 1.2; }
-        h3 { color: var(--color-base); margin-top: 15px; font-size: 1.4rem; font-family: var(--font-serif); }
-
-        .subtitle {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #4b5563;
-            max-width: 750px;
-            margin: 0 auto 40px;
+        .hero h1 {
+            font-family: var(--font-head); font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1; margin-bottom: 20px; font-weight: 700;
         }
 
-        /* FONDOS */
-        .section-servicio {
-            background-color: #f9fafb;
-            background-image:
-                linear-gradient(120deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(60deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(0deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-            background-size: 30px 52px;
+        .hero p { font-size: 1.25rem; color: #e2e8f0; margin: 0 auto 40px; max-width: 600px; }
+
+        .wave-separator {
+            position: absolute; bottom: -1px; left: 0; width: 100%;
+            overflow: hidden; line-height: 0; transform: rotate(180deg); z-index: 3;
+        }
+        .wave-separator svg { position: relative; display: block; width: calc(137% + 1.3px); height: 80px; }
+        .wave-separator .shape-fill { fill: var(--body-bg); }
+
+        /* --- DECORACIÓN FLOTANTE --- */
+        .section-deco-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; pointer-events: none; z-index: 0;
+        }
+        .floating-icon {
+            position: absolute; color: var(--text-dark);
+            opacity: 0.06; font-size: 15rem; transition: all 0.5s ease;
+            animation: float-slow 8s ease-in-out infinite;
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(var(--r)); }
+            50% { transform: translateY(-20px) rotate(var(--r)); }
         }
 
-        .section-talleres {
-            background-color: #eef2ff;
-            background-image:
-                repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 40px),
-                repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 40px);
-            background-size: 40px 40px;
+        /* --- SECCIONES Y TARJETAS --- */
+        .section-padding { padding: 100px 20px; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; }
+        .bg-light { background-color: var(--body-bg); }
+        .bg-grey { background-color: var(--section-alt); }
+
+        .section-title { font-family: var(--font-head); font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; text-align: center; font-weight: 700; position: relative; z-index: 1; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin-bottom: 50px; position: relative; z-index: 1; }
+
+        .grid-cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; width: 100%; max-width: 1100px; position: relative; z-index: 1;
         }
 
-        .section-beneficios {
-            background-color: #f9fafb;
-            position: relative;
-            overflow: hidden;
+        .card-modern {
+            background: white; border-radius: 20px; padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border-light);
+            transition: all 0.3s ease; position: relative; overflow: hidden; text-align: left;
         }
-        .section-beneficios::before {
-            content: '';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-            background-image: url('tux-bg.webp');
-            background-size: 1100px;
-            background-position: right 50%;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            background-attachment: fixed;
-        }
+        .card-modern:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15); border-color: var(--primary); }
 
-        .section-final-cta {
-            background-color: var(--color-acento-primary);
-            color: var(--color-base);
-            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
-            background-size: 50px 50px;
-        }
-
-        /* TARJETAS */
-        .grid-3-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            padding: 35px 25px;
-            text-align: left;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 32px 0 rgba(0, 11, 54, 0.05);
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.95);
-            border-color: var(--color-acento-primary);
-            box-shadow: 0 20px 40px rgba(0, 225, 213, 0.15);
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            color: var(--color-acento-primary);
-            margin-bottom: 15px;
-            display: block;
-        }
-        .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.3rem; color: var(--color-base); }
-        .card p { font-size: 1rem; color: #4b5563; }
-
-        /* TABLA COMPARATIVA */
-        .comparison-box {
-            margin: 50px auto 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            overflow: hidden;
-            max-width: 800px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-        }
-        .comp-row { display: flex; border-bottom: 1px solid #e5e7eb; padding: 15px 20px; align-items: center; }
-        .comp-row:last-child { border-bottom: none; }
-        .comp-label { flex: 2; font-weight: bold; color: var(--color-base); text-align: left; font-size: 0.95rem; }
-        .comp-val { flex: 1; text-align: center; font-size: 0.9rem; }
-        .win { color: #059669; font-weight: 800; }
-        .lose { color: #dc2626; text-decoration: line-through; opacity: 0.6; }
-
-        /* BOTONES */
-        .cta-btn {
-            display: inline-block; background: var(--color-acento-primary);
-            color: var(--color-base); padding: 18px 40px;
-            border-radius: 50px; text-decoration: none;
-            font-weight: bold; font-size: 1.15rem;
+        /* ICONOS GRADIENTE TECH */
+        .card-icon-box {
+            width: 65px; height: 65px;
+            background: #f1f5f9;
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 25px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(0, 225, 213, 0.4);
-            margin-top: 30px;
-            border: 2px solid transparent;
         }
-        .cta-btn:hover {
-            background: var(--color-acento-secondary);
-            transform: scale(1.05);
-            color: white;
-            box-shadow: 0 8px 25px rgba(8, 211, 255, 0.5);
+        .card-icon-box i {
+            background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 5px rgba(14, 165, 233, 0.25));
         }
+        .card-modern:hover .card-icon-box { background: #e0f2fe; transform: scale(1.1) rotate(5deg); }
 
-        .section-final-cta h2 { color: var(--color-base); line-height: 1.2; }
-        .section-final-cta p { font-size: 1.3rem; margin-top: -15px; color: var(--color-base); opacity: 0.9; }
-        .section-final-cta .cta-btn {
-            background: var(--color-base);
-            color: var(--color-acento-primary);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin-bottom: 40px;
-        }
-        .section-final-cta .cta-btn:hover {
-            background: #111827;
-            color: var(--color-acento-secondary);
-            transform: scale(1.05);
-        }
+        .card-modern h3 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 15px; color: var(--text-dark); }
+        .card-modern p { color: var(--text-muted); font-size: 1rem; }
 
-        /* FOOTER */
+        /* --- COMPARATIVA --- */
+        .comparison-container {
+            width: 100%; max-width: 800px; margin: 60px auto 20px; position: relative; z-index: 1;
+            background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-light); overflow: hidden;
+        }
+        .comp-row { display: flex; padding: 18px 25px; border-bottom: 1px solid var(--border-light); align-items: center; }
+        .comp-row.header { background: #f8fafc; font-family: var(--font-head); font-weight: 700; color: var(--text-dark); }
+        .comp-label { flex: 2; font-weight: 600; color: var(--text-dark); }
+        .comp-val { flex: 1; text-align: center; }
+        .win { color: #16a34a; font-weight: 700; background: #dcfce7; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; }
+        .lose { color: #dc2626; opacity: 0.7; text-decoration: line-through; }
+
+        /* --- BOTONES --- */
+        .btn-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 100px; font-weight: 700; text-decoration: none; transition: all 0.3s; font-size: 1rem; position: relative; z-index: 1; }
+
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); }
+
+        .btn-whatsapp-big { background: #25D366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp-big:hover { background: #1ebc57; transform: translateY(-3px); }
+
+        /* --- FOOTER --- */
         footer {
-            background: var(--color-base);
-            color: #9ca3af;
-            text-align: center;
-            padding: 20px;
+            background: var(--hero-bg); color: #94a3b8;
+            padding: 25px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
-            width: 100%;
-            position: absolute; bottom: 0; left: 0;
         }
+        .footer-socials { display: flex; gap: 20px; }
+        .footer-socials a { color: #94a3b8; font-size: 1.2rem; transition: 0.3s; }
+        .footer-socials a:hover { color: var(--primary); transform: translateY(-3px); }
 
-        .social-icons {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-        .social-icons a {
-            color: var(--color-base);
-            font-size: 2.2rem;
-            transition: all 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: white;
-            transform: scale(1.2);
-        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            .section-beneficios::before {
-                background-attachment: scroll !important;
-                background-size: 500px;
-                background-position: center bottom;
-            }
-            .snap-section { min-height: auto; padding: 120px 20px 60px; }
-            .grid-3-cards { gap: 20px; }
-            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Menú oculto en móvil, solo logo */
+            .navbar { justify-content: center; }
+            h1 { font-size: 2.8rem; }
+            footer { flex-direction: column; gap: 15px; text-align: center; }
+            .hero-main-logo { width: 50px; }
+            /* Iconos flotantes menos intrusivos en móvil */
+            .floating-icon { opacity: 0.03; font-size: 8rem; }
         }
     </style>
 </head>
@@ -320,187 +213,190 @@
 
     <nav class="navbar">
         <a href="#inicio" class="nav-logo">
-            <img src="ico.png" alt="Logo"> KHIPU 88
+            <img src="ico.png" alt="Logo Khipu 88">
+            KHIPU 88
         </a>
         <div class="nav-links">
-            <a href="#servicio">Servicios</a> <a href="#talleres">Cursos</a>
+            <a href="#servicio">Servicios</a>
+            <a href="#talleres">Cursos</a>
             <a href="#porque">Ventajas</a>
-            <a href="#contacto">Contacto</a>
+            <a href="https://wa.me/51961468282?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20sus%20servicios." class="btn-whatsapp-nav">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
         </div>
     </nav>
 
-    <div class="scroll-container">
+    <header id="inicio" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="poster.png">
+            <source src="videofondo.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
 
-        <header id="inicio" class="snap-section section-header-bg">
-            <video class="video-background" autoplay muted loop playsinline poster="poster.png">
-                <source src="videofondo.mp4" type="video/mp4">
-                <source src="videofondo.webm" type="video/webm">
-                Tu navegador no soporta videos HTML5.
-            </video>
-            <div class="content-wrapper">
-                <img src="logocuadrado.webp" alt="Logo Khipu 88" class="reveal">
-                <h1 class="reveal">¡No botes tu compu lenta! <br> ¡Dale una nueva vida!</h1>
-                <p class="reveal">Optimizamos tu compu con Linux, más rápida y segura que nunca. Servicio a domicilio en Trujillo.</p>
+        <div class="hero-content reveal">
+            <img src="logocuadrado.webp" alt="Logo Khipu" class="hero-main-logo">
 
-                <a href="#servicio" class="cta-btn primary reveal"><i class="fas fa-arrow-down"></i> Ver cómo funciona</a>
+            <h1>Revive tu equipo,<br>sin comprar uno nuevo.</h1>
+            <p>Optimización experta con Linux y educación digital. La alternativa inteligente, rápida y sostenible.</p>
+
+            <div class="btn-container">
+                <a href="#servicio" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Ver Servicios
+                </a>
+                <a href="#talleres" class="btn btn-primary">
+                    <i class="fas fa-graduation-cap"></i> Ver Cursos
+                </a>
             </div>
-        </header>
+        </div>
 
-        <section id="servicio" class="snap-section section-servicio">
-            <div class="content-wrapper">
-                <h2 class="reveal">¡Optimizamos tu compu!</h2>
-                <p class="subtitle reveal">Hacemos que tu equipo antiguo vuele de nuevo.</p>
+        <div class="wave-separator">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
 
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-rocket"></i>
-                        <h3>Velocidad extrema</h3>
-                        <p>Linux es ligero. Combinado con un <strong>SSD</strong> recomendado, tu PC volará sin gastar en una nueva.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-recycle"></i>
-                        <h3>Ahorro y Reciclaje</h3>
-                        <p>Alargas la vida útil de tu hardware por años. Ahorras dinero y cuidas el planeta evitando basura electrónica.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-shield-alt"></i>
-                        <h3>Seguridad Total</h3>
-                        <p>Olvídate de los antivirus caros y las licencias vencidas. Linux es robusto y seguro para navegar.</p>
-                    </div>
-                </div>
+    <section id="servicio" class="section-padding bg-light">
+        <div class="section-deco-container">
+            <i class="fas fa-microchip floating-icon" style="top: -5%; right: -5%; --r: -15deg; font-size: 25rem;"></i>
+            <i class="fas fa-bolt floating-icon" style="bottom: 5%; left: -2%; --r: 10deg; font-size: 20rem;"></i>
+        </div>
 
-                <div class="reveal" style="width: 100%;">
-                    <div class="comparison-box">
-                        <div class="comp-row" style="background: #f3f4f6; font-weight:bold;">
-                            <div class="comp-label">Comparativa Laptop Antigua (Core i3)</div>
-                            <div class="comp-val">Windows 10</div>
-                            <div class="comp-val" style="color: var(--color-acento-secondary);">Linux</div> </div>
-                        <div class="comp-row">
-                            <div class="comp-label"><i class="fas fa-stopwatch"></i> Tiempo de encendido</div>
-                            <div class="comp-val lose">1m 45s</div>
-                            <div class="comp-val win">35s</div>
-                        </div>
-                        <div class="comp-row">
-                            <div class="comp-label"><i class="fas fa-memory"></i> Uso de RAM (Reposo)</div>
-                            <div class="comp-val lose">2.1 GB</div>
-                            <div class="comp-val win">0.6 GB</div>
-                        </div>
-                        <div class="comp-row">
-                            <div class="comp-label"><i class="fas fa-shield-virus"></i> Virus y Malware</div>
-                            <div class="comp-val lose">Vulnerable</div>
-                            <div class="comp-val win">Inmune</div>
-                        </div>
-                    </div>
-                </div>
+        <h2 class="section-title reveal">Potencia Pura</h2>
+        <p class="section-subtitle reveal">Tu computadora antigua puede ser más rápida que una nueva básica.</p>
 
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20quisiera%20revivir%20mi%20PC%20a%20domicilio%2C%20por%20favor%20br%C3%ADndame%20m%C3%A1s%20detalles." class="cta-btn reveal"><i class="fas fa-tools"></i> Quiero revivir mi PC a Domicilio</a>
+        <div class="grid-cards">
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-gauge-high"></i></div>
+                <h3>Velocidad x3</h3>
+                <p>Linux no tiene "peso muerto". Al instalarlo, tu equipo usará menos recursos y funcionará increíblemente rápido.</p>
             </div>
-        </section>
-
-        <section id="talleres" class="snap-section section-talleres">
-            <div class="content-wrapper">
-                <h2 class="reveal">Cursos para todos</h2>
-                <p class="subtitle reveal">Pierde el miedo a la tecnología. Clases pacientes y paso a paso.</p>
-
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-user-graduate"></i>
-                        <h3>Desde Cero (Para Todos)</h3>
-                        <p>Ideal para todo el mundo, desde niños hasta adultos mayores. Método sencillo garantizado, sin palabras complicadas.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-file-invoice"></i>
-                        <h3>Ofimática e Internet</h3>
-                        <p>Aprende a redactar documentos, usar hojas de cálculo gratuitas (LibreOffice) y navegar seguro.</p>
-                    </div>
-
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-laptop-house"></i>
-                        <h3>Virtual o a Domicilio</h3>
-                        <p>Aprende desde casa vía Zoom/Meet o vamos a tu domicilio en Trujillo para enseñanza personalizada.</p>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20estoy%20interesado%20en%20aprender%20Linux%20y%20computaci%C3%B3n%20desde%20cero." class="cta-btn reveal"><i class="fas fa-graduation-cap"></i> Quiero aprender Linux desde cero</a>
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-shield-virus"></i></div>
+                <h3>Inmune a Virus</h3>
+                <p>Despídete de los antivirus y licencias vencidas. Linux es seguro por diseño y respeta tu privacidad.</p>
             </div>
-        </section>
-
-        <section id="porque" class="snap-section section-beneficios">
-            <div class="content-wrapper">
-                <h2 class="reveal">¿Por qué elegir Linux?</h2>
-                <p class="subtitle reveal">Es el sistema que mueve el mundo, ahora fácil para ti.</p>
-
-                <div class="grid-3-cards">
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-hand-holding-usd"></i>
-                        <h3>100% Gratuito y Legal</h3>
-                        <p>Linux es Software Libre. Nunca pagarás licencias piratas ni renovaciones anuales. Todo es legal y gratis.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-tachometer-alt"></i>
-                        <h3>Rendimiento Superior</h3>
-                        <p>Diseñado para ser eficiente. Linux no tiene procesos "basura" en segundo plano que ralentizan tu PC.</p>
-                    </div>
-                    <div class="card reveal-stagger">
-                        <i class="card-icon fas fa-users"></i>
-                        <h3>Comunidad Global</h3>
-                        <p>Gracias a la comunidad mundial de código abierto, el sistema mejora cada día para ti, siendo siempre seguro.</p>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20tengo%20algunas%20dudas%20sobre%20Linux%2C%20quisiera%20m%C3%A1s%20info." class="cta-btn reveal"><i class="fab fa-whatsapp"></i> Hablar con un experto</a>
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-house-chimney-medical"></i></div>
+                <h3>A Domicilio</h3>
+                <p>Servicio exclusivo en Trujillo. Vamos a tu casa, diagnosticamos y dejamos tu PC lista sin que la muevas.</p>
             </div>
-        </section>
+        </div>
 
-        <section id="contacto" class="snap-section section-final-cta">
-            <div class="content-wrapper">
-                <h2 class="reveal">🚀 El cambio es más fácil de lo que crees.</h2>
-                <p class="reveal">Estamos listos para ayudarte a dar el salto.</p>
-                <a href="https://wa.me/51961468282?text=Hola%20Khipu88%2C%20estoy%20listo%20para%20mejorar%20mi%20equipo.%20Solicito%20informaci%C3%B3n." class="cta-btn primary reveal"><i class="fas fa-mobile-alt"></i> Contáctanos Ahora</a>
-
-                <div class="social-icons reveal">
-                    <a href="https://wa.me/51961468282" target="_blank" aria-label="Escríbenos al WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/khipu88pe" target="_blank" aria-label="Visita nuestro Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/khipu88pe" target="_blank" aria-label="Visita nuestro Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:khipu88@gmail.com" aria-label="Envíanos un correo electrónico"><i class="fas fa-envelope"></i></a>
-                </div>
+        <div class="comparison-container reveal">
+            <div class="comp-row header">
+                <div class="comp-label">Rendimiento (Core i3 antiguo)</div>
+                <div class="comp-val">Windows 10</div>
+                <div class="comp-val" style="color: var(--primary-dark);">Linux</div>
             </div>
+            <div class="comp-row">
+                <div class="comp-label"><i class="fas fa-stopwatch"></i> Tiempo de encendido</div>
+                <div class="comp-val lose">1 min 45s</div>
+                <div class="comp-val win">35 seg</div>
+            </div>
+            <div class="comp-row">
+                <div class="comp-label"><i class="fas fa-memory"></i> Consumo RAM (Reposo)</div>
+                <div class="comp-val lose">2.1 GB</div>
+                <div class="comp-val win">0.6 GB</div>
+            </div>
+        </div>
 
-            <footer>
-                © 2026 Khipu 88 Linux Lab — Tecnología accesible, sostenible y libre. Trujillo, Perú.
-            </footer>
-        </section>
+        <a href="https://wa.me/51961468282?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20sus%20servicios." class="btn btn-whatsapp-big reveal" style="margin-top: 30px;">
+            <i class="fas fa-calendar-check"></i> Quiero una visita a domicilio
+        </a>
+    </section>
 
-    </div>
+    <section id="talleres" class="section-padding bg-grey">
+        <div class="section-deco-container">
+            <i class="fas fa-keyboard floating-icon" style="top: 5%; left: -5%; --r: 20deg; font-size: 22rem;"></i>
+            <i class="fas fa-terminal floating-icon" style="bottom: -10%; right: -2%; --r: -10deg; font-size: 18rem;"></i>
+        </div>
+
+        <h2 class="section-title reveal">Pierde el miedo</h2>
+        <p class="section-subtitle reveal">Capacitación paciente y paso a paso para todas las edades.</p>
+
+        <div class="grid-cards">
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-users"></i></div>
+                <h3>Desde Cero</h3>
+                <p>Ideal para todo el mundo. Sin palabras complicadas. Aprende a usar la computadora con confianza y seguridad.</p>
+            </div>
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-file-invoice"></i></div>
+                <h3>Ofimática Libre</h3>
+                <p>Redacta documentos, crea tablas y presentaciones con herramientas gratuitas (LibreOffice) compatibles con todo.</p>
+            </div>
+            <div class="card-modern reveal-stagger">
+                <div class="card-icon-box"><i class="fas fa-globe"></i></div>
+                <h3>Internet Seguro</h3>
+                <p>Aprende a navegar, usar el correo y hacer trámites sin caer en estafas digitales. Seguridad para la vida diaria.</p>
+            </div>
+        </div>
+
+        <a href="https://wa.me/51961468282?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20sus%20servicios." class="btn btn-whatsapp-big reveal" style="margin-top: 40px;">
+            <i class="fas fa-comment-dots"></i> Quiero aprender hoy
+        </a>
+    </section>
+
+    <section id="porque" class="section-padding bg-light">
+        <div class="section-deco-container">
+            <i class="fab fa-linux floating-icon" style="top: 10%; right: -8%; --r: 15deg; font-size: 28rem;"></i>
+            <i class="fas fa-earth-americas floating-icon" style="bottom: 5%; left: -5%; --r: -20deg; font-size: 20rem;"></i>
+        </div>
+
+        <h2 class="section-title reveal">¿Por qué Linux?</h2>
+        <p class="section-subtitle reveal">Libertad, ahorro y conciencia ecológica.</p>
+
+        <div class="grid-cards">
+            <div class="card-modern reveal-stagger" style="border-left: 5px solid #25D366;">
+                <div class="card-icon-box"><i class="fas fa-hand-holding-dollar"></i></div>
+                <h3>100% Gratuito y Legal</h3>
+                <p>Linux es software libre. Tienes derecho a usarlo para siempre sin pagar licencias, cracks ni suscripciones.</p>
+            </div>
+            <div class="card-modern reveal-stagger" style="border-left: 5px solid #22d3ee;">
+                <div class="card-icon-box"><i class="fas fa-leaf"></i></div>
+                <h3>Eco-Amigable</h3>
+                <p>Al extender la vida de tu equipo, evitas generar basura electrónica. Reciclar es mejor que comprar.</p>
+            </div>
+            <div class="card-modern reveal-stagger" style="border-left: 5px solid #818cf8;">
+                <div class="card-icon-box"><i class="fas fa-users"></i></div>
+                <h3>Comunidad Global</h3>
+                <p>Millones de personas mejoran el sistema a diario. No dependes de una empresa, sino de la humanidad.</p>
+            </div>
+        </div>
+
+        <a href="https://wa.me/51961468282?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20sus%20servicios." class="btn btn-primary reveal" style="margin-top: 40px; background: #0f172a;">
+            <i class="fab fa-linux" style="font-size: 1.3rem;"></i> Quiero cambiarme a Linux
+        </a>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-socials">
+            <a href="https://wa.me/51961468282?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20sus%20servicios."><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/khipu88pe"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/khipu88pe"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:khipu88@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <div style="opacity: 0.7;">
+            © 2026 Khipu 88 Linux Lab. Trujillo, Perú.
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-
     <script>
-        const defaultReveal = {
-            delay: 150,
-            distance: '40px',
-            easing: 'ease-in-out',
-            reset: true,
-            duration: 600,
-            viewFactor: 0.3
-        };
+        ScrollReveal().reveal('.reveal', { distance: '40px', duration: 800, origin: 'bottom', interval: 100, opacity: 0, reset: false });
+        ScrollReveal().reveal('.reveal-stagger', { distance: '40px', duration: 800, origin: 'bottom', interval: 150, opacity: 0, reset: false });
 
-        ScrollReveal().reveal('.navbar', { delay: 0, distance: '0px', opacity: 0, duration: 800 });
-        ScrollReveal().reveal('#inicio .reveal', { ...defaultReveal, origin: 'bottom' });
-
-        ScrollReveal().reveal('#servicio h2, #servicio .subtitle', { ...defaultReveal, origin: 'right', distance: '50px' });
-        ScrollReveal().reveal('#servicio .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
-        ScrollReveal().reveal('#servicio .comparison-box', { ...defaultReveal, delay: 300, origin: 'bottom', distance: '60px' });
-        ScrollReveal().reveal('#servicio .cta-btn', { ...defaultReveal, delay: 400, origin: 'bottom' });
-
-        ScrollReveal().reveal('#talleres h2, #talleres .subtitle, #talleres .cta-btn', { ...defaultReveal, origin: 'left', distance: '50px' });
-        ScrollReveal().reveal('#talleres .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
-
-        ScrollReveal().reveal('#porque h2, #porque .subtitle, #porque .cta-btn', { ...defaultReveal, origin: 'top', distance: '50px' });
-        ScrollReveal().reveal('#porque .reveal-stagger', { ...defaultReveal, delay: 200, interval: 150, origin: 'bottom' });
-
-        ScrollReveal().reveal('#contacto .reveal', { ...defaultReveal, origin: 'bottom' });
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = "rgba(2, 6, 23, 0.95)";
+                navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.3)";
+            } else {
+                navbar.style.background = "rgba(2, 6, 23, 0.85)";
+                navbar.style.boxShadow = "none";
+            }
+        });
     </script>
-
 </body>
 </html>
